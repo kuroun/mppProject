@@ -56,11 +56,28 @@ public class MainFrameInit {
 
 	@FXML
 	void addNewLibraryMember(ActionEvent event) {
-		Parent root;
 		try {
-			root = FXMLLoader.load(getClass().getResource(
+			Parent addMemberForm;
+			addMemberForm = FXMLLoader.load(getClass().getResource(
 					"AddNewLibraryMember.fxml"));
-			operation.getChildren().add(root);
+			operation.getChildren().clear();
+			operation.getChildren().add(addMemberForm);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+
+	@FXML
+	void checkoutABook(ActionEvent event) {
+		try {
+			Parent checkoutForm;
+			checkoutForm = FXMLLoader.load(getClass().getResource(
+					"CheckOutBookForm.fxml"));
+			operation.getChildren().clear();
+			operation.getChildren().add(checkoutForm);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -68,13 +85,8 @@ public class MainFrameInit {
 	}
 
 	@FXML
-	void checkoutABook(ActionEvent event) {
-	
-	}
-
-	@FXML
 	void addACopyOfExistingBook(ActionEvent event) {
-
+		operation.getChildren().clear();
 	}
 
 	@FXML
