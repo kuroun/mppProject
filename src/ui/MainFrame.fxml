@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<VBox fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainFrameInit">
+   <children>
+      <AnchorPane fx:id="header" prefHeight="60.0" prefWidth="685.0">
+         <children>
+            <Label layoutX="17.0" layoutY="-20.0" prefHeight="92.0" prefWidth="281.0" text="Library System">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Text fx:id="txtUserName" layoutX="482.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sophanna" wrappingWidth="108.20426940917969" />
+            <Label layoutX="403.0" layoutY="17.0" prefHeight="26.0" prefWidth="70.0" text="User Name:" />
+         </children>
+      </AnchorPane>
+      <SplitPane fx:id="sppFunction" dividerPositions="0.3" prefHeight="544.0" prefWidth="737.0">
+         <items>
+            <VBox fx:id="menu" fillWidth="false" prefHeight="396.0" prefWidth="214.0" spacing="15.0">
+               <children>
+                  <Button fx:id="btnAddNewLibraryMember" mnemonicParsing="false" onAction="#addNewLibraryMember" prefHeight="26.0" prefWidth="195.0" text="Add new library member" />
+                  <Button fx:id="btnCheckoutBook" mnemonicParsing="false" onAction="#checkoutABook" prefHeight="26.0" prefWidth="195.0" text="Checkout a book" />
+                  <Button fx:id="btnAddCopyExistingBook" mnemonicParsing="false" onAction="#addACopyOfExistingBook" prefHeight="26.0" prefWidth="195.0" text="Add a copy of existing book" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="10.0" top="10.0" />
+               </padding>
+            </VBox>
+            <Pane fx:id="operation" prefHeight="510.0" prefWidth="517.0" />
+         </items>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </SplitPane>
+   </children>
+</VBox>
