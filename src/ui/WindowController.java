@@ -10,7 +10,8 @@ public class WindowController extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("MainFrame.fxml"));
+		//Parent root = FXMLLoader.load(getClass().getResource("MainFrame.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
 		primaryStage.setTitle("Library System");
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);

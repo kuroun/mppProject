@@ -40,7 +40,8 @@ public final class AddNewLibraryMemberRuleSet implements RuleSet {
 				&& state.length() == 2;
 		boolean firstNameFormat = firstName.matches("[a-zA-Z]+");
 		boolean lastNameFormat = lastName.matches("[a-zA-Z]+");
-		boolean phoneNumberFormat = phoneNumber.matches("-?\\d+(\\.\\d+)?") && phoneNumber.length() == 10;
+		boolean phoneNumberFormat = phoneNumber.matches("-?\\d+(\\.\\d+)?")
+				&& phoneNumber.length() == 10;
 
 		if (nonempty == false) {
 			throw new RuleException(ExceptionDefinition.ALL_FIELD_NONEMPTY);
@@ -57,21 +58,17 @@ public final class AddNewLibraryMemberRuleSet implements RuleSet {
 		if (lastNameFormat == false) {
 			throw new RuleException(ExceptionDefinition.LASTNAME);
 		}
-		
+
 		if (stateFormat == false) {
 			throw new RuleException(ExceptionDefinition.STATE);
 		}
-		
+
 		if (zipFormat == false) {
 			throw new RuleException(ExceptionDefinition.ZIP);
 		}
-		
+
 		if (phoneNumberFormat == false) {
 			throw new RuleException(ExceptionDefinition.PHONENUMBER);
 		}
-
-		
-
 	}
-
 }

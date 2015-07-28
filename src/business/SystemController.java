@@ -2,6 +2,8 @@ package business;
 
 import java.util.HashMap;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import ruleset.ExceptionDefinition;
 import ruleset.RuleException;
 import dataaccess.Auth;
@@ -106,5 +108,17 @@ public class SystemController implements ControllerInterface {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public Alert messageDialog(String type) {
+		Alert alert;
+		if (type.equalsIgnoreCase("warning"))
+			alert = new Alert(AlertType.WARNING);
+		else
+			alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Library System");
+		alert.setHeaderText(null);
+		return alert;
+	}
+
 
 }

@@ -85,12 +85,12 @@ public class AddNewLibraryMemberInit {
 
 			ControllerInterface conIn = new SystemController();
 			conIn.addNewMember(memberID, firstName, lastName, phoneNumber, add);
-			Alert alert = messageDialog("INFORMATION");
+			Alert alert = new SystemController().messageDialog("INFORMATION");
 			alert.setContentText("New member is added successfully to system");
 			alert.showAndWait();
 			clearWindow();
 		} catch (Exception e) {
-			Alert alert = messageDialog("WARNING");
+			Alert alert = new SystemController().messageDialog("WARNING");
 			alert.setContentText(e.getMessage());
 			alert.showAndWait();
 		}
@@ -174,17 +174,7 @@ public class AddNewLibraryMemberInit {
 		this.txtState = txtState;
 	}
 
-	Alert messageDialog(String type) {
-		Alert alert;
-		if (type.equalsIgnoreCase("warning"))
-			alert = new Alert(AlertType.WARNING);
-		else
-			alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Library System");
-		alert.setHeaderText(null);
-		return alert;
-	}
-
+	
 	void clearWindow() {
 		txtMemberID.setText("");
 		txtFirstName.setText("");
