@@ -1,13 +1,19 @@
 package ui;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.ResourceBundle;
 
-import business.Address;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import business.Address;
+import business.LibraryMember;
+import dataaccess.DataAccess;
+import dataaccess.DataAccessFacade;
 
 public class AddNewLibraryMemberInit {
 
@@ -49,6 +55,15 @@ public class AddNewLibraryMemberInit {
 
 	@FXML
 	void clearInput(ActionEvent event) {
+		txtMemberID.setText("");
+		txtFirstName.setText("");
+		txtLastName.setText("");
+		txtStreet.setText("");
+		txtCity.setText("");
+		txtState.setText("");
+		txtStreet.setText("");
+		txtZip.setText("");
+		txtPhoneNumber.setText("");
 		
 	}
 
@@ -56,7 +71,28 @@ public class AddNewLibraryMemberInit {
 	void addUser(ActionEvent event) {
 		String memberID = txtMemberID.getText();
 		String firstName = txtFirstName.getText();
-		//String 
+		String lastName = txtLastName.getText();
+		String street = txtStreet.getText();
+		String state = txtState.getText();
+		String zip = txtZip.getText();
+		String phoneNumber = txtPhoneNumber.getText();
+		String city = txtCity.getText();
+		
+		Address add = new Address(street, city, state, zip);
+		LibraryMember mem = new LibraryMember(firstName, lastName, phoneNumber, add, memberID);
+		DataAccess da = new DataAccessFacade();
+		da.saveNewMember(mem);
+		/*HashMap<String, LibraryMember> map = da.readMemberMap();
+		for (Entry<String, LibraryMember> entry : map.entrySet()) {
+			  String key = entry.getKey();
+			  LibraryMember value = entry.getValue();
+			  System.out.println(key);
+			  System.out.println(value.getFirstName());
+			  System.out.println(value.getLastName());
+			  System.out.println(value.getMemberID());
+			  System.out.println("**********");
+			}
+			*/
 	}
 
 	@FXML
