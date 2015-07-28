@@ -20,7 +20,6 @@ public class AddCopyOfBookInit {
     @FXML
     private URL location;
 
-    @FXML
     private Text actiontarget;
 
     @FXML
@@ -30,21 +29,10 @@ public class AddCopyOfBookInit {
     private TextField textISDN;
 
     @FXML
-    void handleSubmitButtonAction(ActionEvent event){
+    void handleSubmitButtonAction(ActionEvent event) throws LibrarySystemException {
     	ControllerInterface sc=new SystemController();
-          String aIsdn=textISDN.getText();
-          
-          System.out.println(aIsdn);
-         try {
-			if (sc.addBookCopy(aIsdn)) {
-				
-			actiontarget.setText("Add the book copy successfully");
-			}
-		} catch (LibrarySystemException e) {
-			
-				actiontarget.setText("Add the book copy error!");
-			e.printStackTrace();
-		}
+          String aIsdn=textISDN.toString();
+          sc.addBookCopy(aIsdn);
 		
 	
     }
