@@ -6,8 +6,8 @@ import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;
 
 public interface ControllerInterface {
-//	public void addNewMember(String memberId, String firstName, String lastName,
-//			String telNumber, Address addr) throws LibrarySystemException;
+	public void addNewMember(String memberId, String firstName, String lastName,
+			String telNumber, Address addr) throws LibrarySystemException;
 //	public LibraryMember search(String memberId);
 //	public void updateMemberInfo(String memberId, String firstName, String lastName,
 //			String telNumber, Address addr) throws LibrarySystemException;
