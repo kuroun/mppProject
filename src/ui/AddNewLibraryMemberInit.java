@@ -1,26 +1,18 @@
 package ui;
 
 import java.net.URL;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import ruleset.ExceptionDefinition;
-import ruleset.RuleException;
 import ruleset.RuleSet;
 import ruleset.RuleSetFactory;
 import business.Address;
 import business.ControllerInterface;
-import business.LibraryMember;
-import business.LibrarySystemException;
 import business.SystemController;
-import dataaccess.DataAccess;
-import dataaccess.DataAccessFacade;
 
 public class AddNewLibraryMemberInit {
 

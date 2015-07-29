@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 
+import ui.WindowController;
 import business.Book;
 import business.BookCopy;
 import business.LibraryMember;
@@ -48,8 +49,7 @@ public class DataAccessFacade implements DataAccess {
 
 	// /////save methods
 	// saveNewMember
-	// public void saveNewMember(LibraryMember member)
-
+	
 	// public void updateMember(LibraryMember member)
 	// save new lendable item
 	public void saveNewBook(Book book) {
@@ -167,7 +167,8 @@ public class DataAccessFacade implements DataAccess {
 
 	@Override
 	public void saveNewMember(LibraryMember member) {
-		HashMap<String, LibraryMember> members = new HashMap<String, LibraryMember>();
+		DataAccess da = new DataAccessFacade();
+		HashMap<String, LibraryMember> members = WindowController.LIBRARY_MEMBER_MAP;
 		members.put(member.getMemberID(), member);
 		saveToStorage(StorageType.MEMBERS, members);
 	}

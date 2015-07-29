@@ -4,8 +4,7 @@ import java.util.HashMap;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import ruleset.ExceptionDefinition;
-import ruleset.RuleException;
+import ui.WindowController;
 import dataaccess.Auth;
 import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;
@@ -40,7 +39,7 @@ public class SystemController implements ControllerInterface {
 			throws LibrarySystemException {
 
 		DataAccess da = new DataAccessFacade();
-		HashMap<String, LibraryMember> map = da.readMemberMap();
+		HashMap<String, LibraryMember> map = WindowController.LIBRARY_MEMBER_MAP;
 		if (map.containsKey(memberId))
 			throw new LibrarySystemException(
 					LibrarySystemExceptionDefinition.DUPLICATE_MEMEBER_ID);
