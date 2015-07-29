@@ -2,16 +2,23 @@ package ui;
 
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import ruleset.ExceptionDefinition;
+import ruleset.RuleException;
+import ruleset.RuleSet;
+import ruleset.RuleSetFactory;
 import business.Address;
+import business.ControllerInterface;
 import business.LibraryMember;
+import business.LibrarySystemException;
+import business.SystemController;
 import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;
 
@@ -55,44 +62,38 @@ public class AddNewLibraryMemberInit {
 
 	@FXML
 	void clearInput(ActionEvent event) {
-		txtMemberID.setText("");
-		txtFirstName.setText("");
-		txtLastName.setText("");
-		txtStreet.setText("");
-		txtCity.setText("");
-		txtState.setText("");
-		txtStreet.setText("");
-		txtZip.setText("");
-		txtPhoneNumber.setText("");
-		
+		clearWindow();
 	}
 
 	@FXML
 	void addUser(ActionEvent event) {
-		String memberID = txtMemberID.getText();
-		String firstName = txtFirstName.getText();
-		String lastName = txtLastName.getText();
-		String street = txtStreet.getText();
-		String state = txtState.getText();
-		String zip = txtZip.getText();
-		String phoneNumber = txtPhoneNumber.getText();
-		String city = txtCity.getText();
-		
-		Address add = new Address(street, city, state, zip);
-		LibraryMember mem = new LibraryMember(firstName, lastName, phoneNumber, add, memberID);
-		DataAccess da = new DataAccessFacade();
-		da.saveNewMember(mem);
-		/*HashMap<String, LibraryMember> map = da.readMemberMap();
-		for (Entry<String, LibraryMember> entry : map.entrySet()) {
-			  String key = entry.getKey();
-			  LibraryMember value = entry.getValue();
-			  System.out.println(key);
-			  System.out.println(value.getFirstName());
-			  System.out.println(value.getLastName());
-			  System.out.println(value.getMemberID());
-			  System.out.println("**********");
-			}
-			*/
+
+		try {
+			RuleSet AddNewLibraryMemberRuleSet = RuleSetFactory
+					.getRuleSet(AddNewLibraryMemberInit.this);
+			AddNewLibraryMemberRuleSet.applyRule(AddNewLibraryMemberInit.this);
+			String memberID = txtMemberID.getText();
+			String firstName = txtFirstName.getText();
+			String lastName = txtLastName.getText();
+			String street = txtStreet.getText();
+			String state = txtState.getText();
+			String zip = txtZip.getText();
+			String phoneNumber = txtPhoneNumber.getText();
+			String city = txtCity.getText();
+
+			Address add = new Address(street, city, state, zip);
+
+			ControllerInterface conIn = new SystemController();
+			conIn.addNewMember(memberID, firstName, lastName, phoneNumber, add);
+			Alert alert = messageDialog("INFORMATION");
+			alert.setContentText("New member is added successfully to system");
+			alert.showAndWait();
+			clearWindow();
+		} catch (Exception e) {
+			Alert alert = messageDialog("WARNING");
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
+		}
 	}
 
 	@FXML
@@ -108,4 +109,92 @@ public class AddNewLibraryMemberInit {
 		assert txtStreet != null : "fx:id=\"txtStreet\" was not injected: check your FXML file 'AddNewLibraryMember.fxml'.";
 		assert txtState != null : "fx:id=\"txtState\" was not injected: check your FXML file 'AddNewLibraryMember.fxml'.";
 	}
+
+	public String getTxtMemberID() {
+		return txtMemberID.getText();
+	}
+
+	public void setTxtMemberID(TextField txtMemberID) {
+		this.txtMemberID = txtMemberID;
+	}
+
+	public String getTxtCity() {
+		return txtCity.getText();
+	}
+
+	public void setTxtCity(TextField txtCity) {
+		this.txtCity = txtCity;
+	}
+
+	public String getTxtPhoneNumber() {
+		return txtPhoneNumber.getText();
+	}
+
+	public void setTxtPhoneNumber(TextField txtPhoneNumber) {
+		this.txtPhoneNumber = txtPhoneNumber;
+	}
+
+	public String getTxtZip() {
+		return txtZip.getText();
+	}
+
+	public void setTxtZip(TextField txtZip) {
+		this.txtZip = txtZip;
+	}
+
+	public String getTxtLastName() {
+		return txtLastName.getText();
+	}
+
+	public void setTxtLastName(TextField txtLastName) {
+		this.txtLastName = txtLastName;
+	}
+
+	public String getTxtFirstName() {
+		return txtFirstName.getText();
+	}
+
+	public void setTxtFirstName(TextField txtFirstName) {
+		this.txtFirstName = txtFirstName;
+	}
+
+	public String getTxtStreet() {
+		return txtStreet.getText();
+	}
+
+	public void setTxtStreet(TextField txtStreet) {
+		this.txtStreet = txtStreet;
+	}
+
+	public String getTxtState() {
+		return txtState.getText();
+	}
+
+	public void setTxtState(TextField txtState) {
+		this.txtState = txtState;
+	}
+
+	Alert messageDialog(String type) {
+		Alert alert;
+		if (type.equalsIgnoreCase("warning"))
+			alert = new Alert(AlertType.WARNING);
+		else
+			alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Library System");
+		alert.setHeaderText(null);
+		return alert;
+	}
+
+	void clearWindow() {
+		txtMemberID.setText("");
+		txtFirstName.setText("");
+		txtLastName.setText("");
+		txtStreet.setText("");
+		txtCity.setText("");
+		txtState.setText("");
+		txtStreet.setText("");
+		txtZip.setText("");
+		txtPhoneNumber.setText("");
+	}
+
 }
