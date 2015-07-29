@@ -166,6 +166,14 @@ public class AddNewLibraryMemberInit {
 		this.txtState = txtState;
 	}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> 6ee5c9286ff8ede11aee26d0826ca932b8a4efae
+>>>>>>> b24182f7f8be29c4804ad846cd6a1bcb30aafe19
 	void clearWindow() {
 		txtMemberID.setText("");
 		txtFirstName.setText("");
