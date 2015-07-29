@@ -4,16 +4,20 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import business.SystemController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import dataaccess.Auth;
 
 public class MainFrameInit {
@@ -53,6 +57,34 @@ public class MainFrameInit {
 
 	@FXML
 	private Button btnViewAllLibraryMembers;
+
+	@FXML
+	private Button btnLogout;
+
+	@FXML
+	void logout(ActionEvent event) {
+		// When user click on logout, then close the current window and open
+		// login window
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+
+		// Close MainFrame window
+		Window window = header.getScene().getWindow();
+		if (window instanceof Stage) {
+			((Stage) window).close();
+		}
+
+		// Open login window
+		try {
+			Parent root = loader.load();
+			Stage stage = new Stage();
+			stage.setTitle("Library Systems");
+			stage.setScene(new Scene(root));
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	@FXML
 	void addNewLibraryMember(ActionEvent event) {
@@ -130,6 +162,7 @@ public class MainFrameInit {
 		assert menu != null : "fx:id=\"menu\" was not injected: check your FXML file 'MainFrame.fxml'.";
 		assert operation != null : "fx:id=\"operation\" was not injected: check your FXML file 'MainFrame.fxml'.";
 		assert btnViewAllLibraryMembers != null : "fx:id=\"btnViewAllLibraryMembers\" was not injected: check your FXML file 'MainFrame.fxml'.";
+		assert btnLogout != null : "fx:id=\"btnLogout\" was not injected: check your FXML file 'MainFrame.fxml'.";
 	}
 
 	void initData(String username) {
