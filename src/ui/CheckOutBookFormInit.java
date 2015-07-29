@@ -3,6 +3,8 @@ package ui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import business.LibrarySystemException;
+import business.SystemController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+
 
 public class CheckOutBookFormInit {
 
@@ -71,7 +74,11 @@ public class CheckOutBookFormInit {
     private Label lblISBN;
 
     @FXML
-    void checkOutForm(ActionEvent event) {
+    void checkOutForm(ActionEvent event) throws LibrarySystemException {
+    	String memberId = txtMemberId.getText();
+    	String isbn = txtISBN.getText();
+    	
+    	new SystemController().checkoutBook(memberId, isbn);
 
     }
 

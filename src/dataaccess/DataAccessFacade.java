@@ -171,6 +171,12 @@ public class DataAccessFacade implements DataAccess {
 		members.put(member.getMemberID(), member);
 		saveToStorage(StorageType.MEMBERS, members);
 	}
+	
+	@Override
+	public boolean searchMember(LibraryMember member){
+		
+		return false;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

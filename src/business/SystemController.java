@@ -91,7 +91,13 @@ public class SystemController implements ControllerInterface {
 	@Override
 	public void checkoutBook(String memberId, String isbn)
 			throws LibrarySystemException {
-		// TODO Auto-generated method stub
+		try{
+			DataAccess da = new DataAccessFacade();
+			throw new LibrarySystemException("Member Id is not found");
+			
+		}catch(LibrarySystemException e){
+			
+		}
 		
 	}
 

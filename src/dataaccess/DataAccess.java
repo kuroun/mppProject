@@ -11,6 +11,7 @@ public interface DataAccess {
 
 	// /////save methods
 	public void saveNewMember(LibraryMember member);
+	public boolean searchMember(LibraryMember member);
 
 	// public void updateMember(LibraryMember member);
 
