@@ -17,23 +17,21 @@ import javafx.scene.text.Text;
 
 public class AddCopyOfBookInit {
 
-    @FXML
-    private ResourceBundle resources;
+	 @FXML
+	    private ResourceBundle resources;
 
-    @FXML
-    private URL location;
-    
-    @FXML
-    private Text actiontarget;
+	    @FXML
+	    private URL location;
 
-    @FXML
-    private Button btnCopy;
+	    @FXML
+	    private Button btnCopy;
 
-    @FXML
-    private TextField textISDN;
-    
-    @FXML
-    private Text actionDisplay;
+	    @FXML
+	    private TextField textISDN;
+
+	    @FXML
+	    private Text actionDisplay;
+
 
     @FXML
     void handleSubmitButtonAction(ActionEvent event){
@@ -50,9 +48,9 @@ public class AddCopyOfBookInit {
 				alert.setContentText("This copy of book is added successfully to system.");
 				alert.showAndWait();
 				clearDisplay();
-				  actiontarget.setText("\nThis book (ISBN:"+aIsdn+") have "+sc.searchBook(aIsdn).getCopies().length+" copies now.");
+				actionDisplay.setText("\nThis book (ISBN:"+aIsdn+") have "+sc.searchBook(aIsdn).getCopies().length+" copies now.");
 				  
-				  actionDisplay.setText("");
+				 // actionDisplay.setText("");
 			}
 			
 		} catch (LibrarySystemException e) {
@@ -74,15 +72,14 @@ public class AddCopyOfBookInit {
 		
 	}
 	void clearWindow() {
-    	actiontarget.setText("");
+    	
     	textISDN.setText("");
     	actionDisplay.setText("");
     }
 
     @FXML
     void initialize() {
-        assert actiontarget != null : "fx:id=\"actiontarget\" was not injected: check your FXML file 'AddCopyOfBook.fxml'.";
-        assert btnCopy != null : "fx:id=\"btnCopy\" was not injected: check your FXML file 'AddCopyOfBook.fxml'.";
+    	assert btnCopy != null : "fx:id=\"btnCopy\" was not injected: check your FXML file 'AddCopyOfBook.fxml'.";
         assert textISDN != null : "fx:id=\"textISDN\" was not injected: check your FXML file 'AddCopyOfBook.fxml'.";
         assert actionDisplay != null : "fx:id=\"actionDisplay\" was not injected: check your FXML file 'AddCopyOfBook.fxml'.";
 

@@ -1,44 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 
-<GridPane alignment="center" hgap="10" prefHeight="436.0" prefWidth="562.0" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AddCopyOfBookInit">
-  <padding><Insets bottom="10" left="25" right="25" top="25" /></padding>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AddCopyOfBookInit">
    <children>
-     
-     <Text id="welcome-text" text="Please input a copy of book" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
-     
-     <Label text="ISDN:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-     
-     <TextField fx:id="textISDN" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-     
-     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
-        <children>
-            <Button fx:id="btnCopy" onAction="#handleSubmitButtonAction" prefHeight="30.0" prefWidth="182.0" text="Add A Copy" />
-        </children>
-     </HBox>
-     
-     <Text fx:id="actiontarget" wrappingWidth="249.97412109375" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-      <Text fx:id="actionDisplay" wrappingWidth="249.97412109375" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="142.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="52.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="484.0" minWidth="10.0" prefWidth="172.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="484.0" minWidth="10.0" prefWidth="190.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="484.0" minWidth="10.0" prefWidth="82.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="21.0" minHeight="10.0" prefHeight="14.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="38.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="44.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="21.0" minHeight="8.0" prefHeight="8.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="39.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="22.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text fill="#060a00" stroke="#1b1b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Input A Copy of Book" textAlignment="CENTER" wrappingWidth="529.830078125" GridPane.columnSpan="2" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Label alignment="BOTTOM_RIGHT" prefHeight="34.0" prefWidth="141.0" text="  Book ISBN:" textFill="#000314" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Italic" size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textISDN" prefHeight="25.0" prefWidth="244.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+            <Text fx:id="actionDisplay" fill="#0cc8f2" strokeType="OUTSIDE" strokeWidth="0.0" text="________________________________" textAlignment="CENTER" wrappingWidth="530.9375" GridPane.columnSpan="2" GridPane.rowIndex="6">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Existing Copies of Book Information" textAlignment="CENTER" wrappingWidth="532.13671875" GridPane.columnSpan="2" GridPane.rowIndex="8">
+               <font>
+                  <Font name="System Italic" size="21.0" />
+               </font>
+            </Text>
+            <Button fx:id="btnCopy" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="25.0" prefWidth="175.0" text="Add A Copy" GridPane.columnIndex="3" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+      <ScrollPane prefHeight="324.0" prefWidth="609.0">
+         <content>
+            <TableView prefHeight="283.0" prefWidth="507.0">
+              <columns>
+                <TableColumn prefWidth="217.0" text="Title" />
+                <TableColumn prefWidth="59.0" text="ISBN" />
+                  <TableColumn prefWidth="75.0" text="Author" />
+                  <TableColumn prefWidth="160.0" text="The Number of Copies" />
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
    </children>
-   <columnConstraints>
-      <ColumnConstraints maxWidth="77.0" minWidth="46.0" prefWidth="64.0" />
-      <ColumnConstraints maxWidth="197.0" minWidth="166.0" prefWidth="179.0" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints maxHeight="49.0" minHeight="19.0" prefHeight="23.0" />
-      <RowConstraints maxHeight="31.0" minHeight="1.0" prefHeight="27.0" />
-   </rowConstraints>
-  
-  
-</GridPane>
+</VBox>
