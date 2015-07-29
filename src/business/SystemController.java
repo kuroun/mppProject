@@ -12,11 +12,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+<<<<<<< HEAD
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import ui.CheckOutBookFormInit;
 import ui.MainFrameInit;
 import ui.WindowController;
+=======
+>>>>>>> 01d49db63ff599c7a919fd3526638117ca5fd970
 import dataaccess.Auth;
 import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;
@@ -26,8 +29,7 @@ public class SystemController implements ControllerInterface {
 	public static Auth currentAuth = null;
 
 	public void login(String id, String password) throws LoginException {
-		DataAccess da = new DataAccessFacade();
-		HashMap<String, User> map = da.readUserMap();
+		HashMap<String, User> map = DataAccessFacade.usersMap;
 		if (!map.containsKey(id)) {
 			throw new LoginException("ID " + id + " not found");
 		}
@@ -50,15 +52,15 @@ public class SystemController implements ControllerInterface {
 			String lastName, String telNumber, Address addr)
 			throws LibrarySystemException {
 
-		DataAccessFacade da = new DataAccessFacade();
-		HashMap<String, LibraryMember> map = da.getMembersMap();
+		
+		HashMap<String, LibraryMember> map = DataAccessFacade.membersMap;
 		if (map.containsKey(memberId))
 			throw new LibrarySystemException(
 					LibrarySystemExceptionDefinition.DUPLICATE_MEMEBER_ID);
 		else {
 			LibraryMember mem = new LibraryMember(firstName, lastName,
 					telNumber, addr, memberId);
-
+			DataAccessFacade da = new DataAccessFacade();
 			da.saveNewMember(mem);
 		}
 

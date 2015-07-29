@@ -9,12 +9,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import dataaccess.Auth;
 
 public class MainFrameInit {
@@ -56,6 +59,34 @@ public class MainFrameInit {
 	private Button btnViewAllLibraryMembers;
 	
 	@FXML
+	private Button btnLogout;
+
+	@FXML
+	void logout(ActionEvent event) {
+		// When user click on logout, then close the current window and open
+		// login window
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+
+		// Close MainFrame window
+		Window window = header.getScene().getWindow();
+		if (window instanceof Stage) {
+			((Stage) window).close();
+		}
+
+		// Open login window
+		try {
+			Parent root = loader.load();
+			Stage stage = new Stage();
+			stage.setTitle("Library Systems");
+			stage.setScene(new Scene(root));
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
 	void addNewLibraryMember(ActionEvent event) {
 		try {
 			Parent addMemberForm;
@@ -90,8 +121,6 @@ public class MainFrameInit {
 			e.printStackTrace();
 		}
 	}
-	
-	
 
 	@FXML
 	void addACopyOfExistingBook(ActionEvent event) {
@@ -101,7 +130,7 @@ public class MainFrameInit {
 					"AddCopyOfBook.fxml"));
 			operation.getChildren().clear();
 			operation.getChildren().add(addCopyBook);
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -114,12 +143,13 @@ public class MainFrameInit {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(
 					"LibraryMemberOverview.fxml"));
 			Parent root = loader.load();
-			
+
 			operation.getChildren().clear();
-			
+
 			operation.getChildren().add(root);
-			
-			LibraryMemberOverviewInit controller = loader.<LibraryMemberOverviewInit> getController();
+
+			LibraryMemberOverviewInit controller = loader
+					.<LibraryMemberOverviewInit> getController();
 			controller.setMemberTable();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -139,6 +169,7 @@ public class MainFrameInit {
 		assert menu != null : "fx:id=\"menu\" was not injected: check your FXML file 'MainFrame.fxml'.";
 		assert operation != null : "fx:id=\"operation\" was not injected: check your FXML file 'MainFrame.fxml'.";
 		assert btnViewAllLibraryMembers != null : "fx:id=\"btnViewAllLibraryMembers\" was not injected: check your FXML file 'MainFrame.fxml'.";
+		assert btnLogout != null : "fx:id=\"btnLogout\" was not injected: check your FXML file 'MainFrame.fxml'.";
 	}
 
 	void initData(String username) {
@@ -152,6 +183,7 @@ public class MainFrameInit {
 			menu.getChildren().remove(btnCheckoutBook);
 		} else if (auth.equals(Auth.LIBRARIAN)) {
 			menu.getChildren().remove(btnAddNewLibraryMember);
+			menu.getChildren().remove(btnViewAllLibraryMembers);
 		}
 	}
 }
