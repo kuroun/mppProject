@@ -100,6 +100,7 @@ public class AddNewLibraryMemberInit {
 		assert txtFirstName != null : "fx:id=\"txtFirstName\" was not injected: check your FXML file 'AddNewLibraryMember.fxml'.";
 		assert txtStreet != null : "fx:id=\"txtStreet\" was not injected: check your FXML file 'AddNewLibraryMember.fxml'.";
 		assert txtState != null : "fx:id=\"txtState\" was not injected: check your FXML file 'AddNewLibraryMember.fxml'.";
+
 	}
 
 	public String getTxtMemberID() {

@@ -10,10 +10,7 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 
-import ui.WindowController;
 import business.Book;
-import business.BookCopy;
-import business.CheckoutRecordEntry;
 import business.LibraryMember;
 
 public class DataAccessFacade implements DataAccess {
@@ -26,8 +23,9 @@ public class DataAccessFacade implements DataAccess {
 			+ "//src//dataaccess//storage";
 	public static final String DATE_PATTERN = "MM/dd/yyyy";
 
-	private static HashMap<String, Book> booksMap;
-	private static HashMap<String, LibraryMember> membersMap;
+	public static HashMap<String, Book> booksMap;
+	public static HashMap<String, LibraryMember> membersMap;
+	public static HashMap<String, User> usersMap;
 
 	static {
 		DataAccess da = new DataAccessFacade();
@@ -40,6 +38,11 @@ public class DataAccessFacade implements DataAccess {
 		if (membersMap == null) {
 			membersMap = new HashMap<String, LibraryMember>();
 		}
+		
+		usersMap = da.readUserMap();
+		if(usersMap==null) {
+			usersMap = new HashMap<String, User>();
+		}
 	}
 
 	// //specialized lookup methods
@@ -49,16 +52,16 @@ public class DataAccessFacade implements DataAccess {
 
 	public Book searchBook(String isbn) {
 		// HashMap<String, Book> booksMap = readBooksMap();
-		booksMap = readBooksMap();
+		//booksMap = readBooksMap();
 		Book b = booksMap.get(isbn);
 		return b;
 	}
 
 	public Auth login(String id, String pwd) {
-		HashMap<String, User> userMap = readUserMap();
-		if (!userMap.containsKey(id))
+		//HashMap<String, User> userMap = readUserMap();
+		if (!usersMap.containsKey(id))
 			return null;
-		User user = userMap.get(id);
+		User user = usersMap.get(id);
 		if (!pwd.equals(user.getPassword())) {
 			return null;
 		}
@@ -71,10 +74,10 @@ public class DataAccessFacade implements DataAccess {
 	// public void updateMember(LibraryMember member)
 	// save new lendable item
 	public void saveNewBook(Book book) {
-		HashMap<String, Book> bookMap = readBooksMap();
+		//HashMap<String, Book> bookMap = booksMap;
 		String isbn = book.getIsbn();
-		bookMap.put(isbn, book);
-		saveToStorage(StorageType.BOOKS, bookMap);
+		booksMap.put(isbn, book);
+		saveToStorage(StorageType.BOOKS, booksMap);
 	}
 
 	// ////read methods that return full maps
@@ -183,9 +186,9 @@ public class DataAccessFacade implements DataAccess {
 
 	@Override
 	public void saveNewMember(LibraryMember member) {
-		HashMap<String, LibraryMember> members = membersMap;
-		members.put(member.getMemberID(), member);
-		saveToStorage(StorageType.MEMBERS, members);
+		//HashMap<String, LibraryMember> members = membersMap;
+		membersMap.put(member.getMemberID(), member);
+		saveToStorage(StorageType.MEMBERS, membersMap);
 	}
 
 	@Override
@@ -196,7 +199,7 @@ public class DataAccessFacade implements DataAccess {
 
 	@Override
 	public LibraryMember searchMember(String memberId) {
-		membersMap = readMemberMap();
+		//membersMap = readMemberMap();
 		LibraryMember lm = membersMap.get(memberId);
 		return lm;
 	}

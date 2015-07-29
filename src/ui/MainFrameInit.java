@@ -82,8 +82,6 @@ public class MainFrameInit {
 			e.printStackTrace();
 		}
 	}
-	
-	
 
 	@FXML
 	void addACopyOfExistingBook(ActionEvent event) {
@@ -93,7 +91,7 @@ public class MainFrameInit {
 					"AddCopyOfBook.fxml"));
 			operation.getChildren().clear();
 			operation.getChildren().add(addCopyBook);
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -106,12 +104,13 @@ public class MainFrameInit {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(
 					"LibraryMemberOverview.fxml"));
 			Parent root = loader.load();
-			
+
 			operation.getChildren().clear();
-			
+
 			operation.getChildren().add(root);
-			
-			LibraryMemberOverviewInit controller = loader.<LibraryMemberOverviewInit> getController();
+
+			LibraryMemberOverviewInit controller = loader
+					.<LibraryMemberOverviewInit> getController();
 			controller.setMemberTable();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -144,6 +143,7 @@ public class MainFrameInit {
 			menu.getChildren().remove(btnCheckoutBook);
 		} else if (auth.equals(Auth.LIBRARIAN)) {
 			menu.getChildren().remove(btnAddNewLibraryMember);
+			menu.getChildren().remove(btnViewAllLibraryMembers);
 		}
 	}
 }
