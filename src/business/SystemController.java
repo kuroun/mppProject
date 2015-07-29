@@ -1,7 +1,9 @@
 package business;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -95,10 +97,20 @@ public class SystemController implements ControllerInterface {
 		if (book == null)
 			throw new LibrarySystemException("No book with isbn " + isbn
 					+ " is in the library collection!");
-		book.addCopy();
+		
+		//book.addCopy();
+		DataAccess da = new DataAccessFacade();
+		HashMap<String, Book> map = da.readBooksMap();
+		map.get(isbn).addCopy();
+		List<Book> allBooks = new ArrayList<Book>();
+		for (Book value : map.values()) {
+			allBooks.add(value);
+		}		
+		DataAccessFacade.loadBookMap(allBooks);
+	
 		return true;
 	}
-
+	
 	public static void main(String[] args) throws LibrarySystemException {
 
 	}

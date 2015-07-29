@@ -1,8 +1,10 @@
 package ui;
 
 import java.net.URL;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
+import business.BookCopy;
 import business.ControllerInterface;
 import business.LibrarySystemException;
 import business.SystemController;
@@ -29,6 +31,9 @@ public class AddCopyOfBookInit {
 
     @FXML
     private TextField textISDN;
+    
+    @FXML
+    private Text actionDisplay;
 
     @FXML
     void handleSubmitButtonAction(ActionEvent event){
@@ -36,8 +41,20 @@ public class AddCopyOfBookInit {
           String aIsdn=textISDN.getText();
           try {
 			if (sc.addBookCopy(aIsdn)) {
-				  actiontarget.setText("This copy of book is added successfully to system.");
+				System.out.println(sc.searchBook(aIsdn).toString());
+				System.out.println(sc.searchBook(aIsdn).getCopies().length);
+//				for (BookCopy cBookCopy : sc.searchBook(aIsdn).getCopies()) {
+//					System.out.print(":"+cBookCopy.getCopyNum());
+//				}
+				Alert alert = new SystemController().messageDialog("INFORMATION");
+				alert.setContentText("This copy of book is added successfully to system.");
+				alert.showAndWait();
+				clearDisplay();
+				  actiontarget.setText("\nThis book (ISBN:"+aIsdn+") have "+sc.searchBook(aIsdn).getCopies().length+" copies now.");
+				  
+				  actionDisplay.setText("");
 			}
+			
 		} catch (LibrarySystemException e) {
 			Alert alert = new SystemController().messageDialog("WARNING");
 			alert.setContentText("this book is not exist!");
@@ -51,9 +68,15 @@ public class AddCopyOfBookInit {
 		
 	
     }
-    void clearWindow() {
+    private void clearDisplay() {   	
+    	textISDN.setText("");
+    	
+		
+	}
+	void clearWindow() {
     	actiontarget.setText("");
     	textISDN.setText("");
+    	actionDisplay.setText("");
     }
 
     @FXML
@@ -61,6 +84,8 @@ public class AddCopyOfBookInit {
         assert actiontarget != null : "fx:id=\"actiontarget\" was not injected: check your FXML file 'AddCopyOfBook.fxml'.";
         assert btnCopy != null : "fx:id=\"btnCopy\" was not injected: check your FXML file 'AddCopyOfBook.fxml'.";
         assert textISDN != null : "fx:id=\"textISDN\" was not injected: check your FXML file 'AddCopyOfBook.fxml'.";
+        assert actionDisplay != null : "fx:id=\"actionDisplay\" was not injected: check your FXML file 'AddCopyOfBook.fxml'.";
+
 
     }
 }
