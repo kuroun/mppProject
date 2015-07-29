@@ -144,6 +144,7 @@ public class MainFrameInit {
 			menu.getChildren().remove(btnCheckoutBook);
 		} else if (auth.equals(Auth.LIBRARIAN)) {
 			menu.getChildren().remove(btnAddNewLibraryMember);
+			menu.getChildren().remove(btnViewAllLibraryMembers);
 		}
 	}
 }

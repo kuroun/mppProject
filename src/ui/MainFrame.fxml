@@ -25,9 +25,9 @@
             <VBox fx:id="menu" fillWidth="false" spacing="15.0">
                <children>
                   <Button fx:id="btnAddNewLibraryMember" mnemonicParsing="false" onAction="#addNewLibraryMember" prefHeight="26.0" prefWidth="195.0" text="Add new library member" />
-                  <Button fx:id="btnCheckoutBook" mnemonicParsing="false" onAction="#checkoutABook" prefHeight="26.0" prefWidth="195.0" text="Checkout a book" />
-                  <Button fx:id="btnAddCopyExistingBook" mnemonicParsing="false" onAction="#addACopyOfExistingBook" prefHeight="26.0" prefWidth="195.0" text="Add a copy of existing book" />
                   <Button fx:id="btnViewAllLibraryMembers" mnemonicParsing="false" onAction="#viewAllLibraryMembers" prefHeight="26.0" prefWidth="194.0" text="View all library members" />
+                  <Button fx:id="btnAddCopyExistingBook" mnemonicParsing="false" onAction="#addACopyOfExistingBook" prefHeight="26.0" prefWidth="195.0" text="Add a copy of existing book" />
+                  <Button fx:id="btnCheckoutBook" mnemonicParsing="false" onAction="#checkoutABook" prefHeight="26.0" prefWidth="195.0" text="Checkout a book" />
                </children>
                <opaqueInsets>
                   <Insets />
