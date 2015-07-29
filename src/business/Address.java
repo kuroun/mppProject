@@ -32,6 +32,6 @@ final public class Address implements Serializable {
 	@Override
 	public String toString() {
 		//return "(" + street + ", " + city + ", " + zip + ")";
-		return street + ", " + city + ", " + zip;
+		return street + ", " + city + ", " + state +  ", " + zip;
 	}
 }

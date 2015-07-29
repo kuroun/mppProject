@@ -1,5 +1,6 @@
 package business;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 
 import javafx.scene.control.Alert;
@@ -38,8 +39,8 @@ public class SystemController implements ControllerInterface {
 			String lastName, String telNumber, Address addr)
 			throws LibrarySystemException {
 
-		DataAccess da = new DataAccessFacade();
-		HashMap<String, LibraryMember> map = WindowController.LIBRARY_MEMBER_MAP;
+		DataAccessFacade da = new DataAccessFacade();
+		HashMap<String, LibraryMember> map = da.getMembersMap();
 		if (map.containsKey(memberId))
 			throw new LibrarySystemException(
 					LibrarySystemExceptionDefinition.DUPLICATE_MEMEBER_ID);
@@ -102,10 +103,37 @@ public class SystemController implements ControllerInterface {
 	}
 
 	@Override
-	public void checkoutBook(String memberId, String isbn)
-			throws LibrarySystemException {
-		// TODO Auto-generated method stub
-
+	public void checkoutBook(String memberId, String isbn) throws LibrarySystemException {
+		try{
+			DataAccess da = new DataAccessFacade();
+			LibraryMember m = da.searchMember(memberId);
+			Book b = da.searchBook(isbn);
+			if(m == null) throw new LibrarySystemException(LibrarySystemExceptionDefinition.MEMBER_NOT_FOUND);
+			else{
+				
+			}
+			if(b == null) throw new LibrarySystemException(LibrarySystemExceptionDefinition.BOOK_NOT_FOUND);
+			else{
+				
+				if(!b.isAvailable()){
+					throw new LibrarySystemException(LibrarySystemExceptionDefinition.BOOK_NOT_AVAILABLE);
+				}
+				else{
+					BookCopy cb = b.getNextAvailableCopy();
+					int getMaxCheckoutLenght = b.getMaxCheckoutLength();
+					da.searchMember(memberId).checkout(cb, LocalDate.now(), LocalDate.now().plusDays(getMaxCheckoutLenght));
+					da.saveNewCheckoutRecordEntry(m,b);
+					//System.out.println(m.getCheckoutRecord().getCheckoutRecordEntry());
+					
+				}
+			}
+			
+		}catch(LibrarySystemException e){
+			Alert alert = messageDialog("WARNING");
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
+		}
+		
 	}
 	
 	public Alert messageDialog(String type) {
@@ -121,3 +149,4 @@ public class SystemController implements ControllerInterface {
 
 
 }
+

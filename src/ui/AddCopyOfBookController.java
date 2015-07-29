@@ -51,7 +51,7 @@ public static void main(String[] args) {
 public void start(Stage stage) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource("AddCopyOfBook.fxml"));
     
-    stage.setTitle("FXML Welcome");
+    stage.setTitle("Add a Copy Of Book");
     stage.setScene(new Scene(root, 300, 275));
     stage.show();
 }

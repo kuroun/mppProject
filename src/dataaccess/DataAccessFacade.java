@@ -13,6 +13,7 @@ import java.util.List;
 import ui.WindowController;
 import business.Book;
 import business.BookCopy;
+import business.CheckoutRecordEntry;
 import business.LibraryMember;
 
 public class DataAccessFacade implements DataAccess {
@@ -25,13 +26,30 @@ public class DataAccessFacade implements DataAccess {
 			+ "//src//dataaccess//storage";
 	public static final String DATE_PATTERN = "MM/dd/yyyy";
 
+	private static HashMap<String, Book> booksMap;
+	private static HashMap<String, LibraryMember> membersMap;
+
+	static {
+		DataAccess da = new DataAccessFacade();
+		booksMap = da.readBooksMap();
+		if (booksMap == null) {
+			booksMap = new HashMap<String, Book>();
+		}
+
+		membersMap = da.readMemberMap();
+		if (membersMap == null) {
+			membersMap = new HashMap<String, LibraryMember>();
+		}
+	}
+
 	// //specialized lookup methods
 	// public LibraryMember searchMember(String memberId) {
 	// implement
 	// }
 
 	public Book searchBook(String isbn) {
-		HashMap<String, Book> booksMap = readBooksMap();
+		// HashMap<String, Book> booksMap = readBooksMap();
+		booksMap = readBooksMap();
 		Book b = booksMap.get(isbn);
 		return b;
 	}
@@ -49,7 +67,7 @@ public class DataAccessFacade implements DataAccess {
 
 	// /////save methods
 	// saveNewMember
-	
+
 	// public void updateMember(LibraryMember member)
 	// save new lendable item
 	public void saveNewBook(Book book) {
@@ -65,8 +83,6 @@ public class DataAccessFacade implements DataAccess {
 	public HashMap<String, Book> readBooksMap() {
 		return (HashMap<String, Book>) readFromStorage(StorageType.BOOKS);
 	}
-
-	// public HashMap<String, LibraryMember> readMemberMap() {
 
 	@SuppressWarnings("unchecked")
 	public HashMap<String, User> readUserMap() {
@@ -167,16 +183,37 @@ public class DataAccessFacade implements DataAccess {
 
 	@Override
 	public void saveNewMember(LibraryMember member) {
-		DataAccess da = new DataAccessFacade();
-		HashMap<String, LibraryMember> members = WindowController.LIBRARY_MEMBER_MAP;
+		HashMap<String, LibraryMember> members = membersMap;
 		members.put(member.getMemberID(), member);
 		saveToStorage(StorageType.MEMBERS, members);
+	}
+
+	@Override
+	public void saveNewCheckoutRecordEntry(LibraryMember member, Book book) {
+		saveToStorage(StorageType.MEMBERS, membersMap);
+		saveToStorage(StorageType.BOOKS, booksMap);
+	}
+
+	@Override
+	public LibraryMember searchMember(String memberId) {
+		membersMap = readMemberMap();
+		LibraryMember lm = membersMap.get(memberId);
+		return lm;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public HashMap<String, LibraryMember> readMemberMap() {
+		// System.out.println(readFromStorage(StorageType.MEMBERS).getClass().getSimpleName());
 		return (HashMap<String, LibraryMember>) readFromStorage(StorageType.MEMBERS);
+	}
+
+	public static HashMap<String, Book> getBooksMap() {
+		return booksMap;
+	}
+
+	public static HashMap<String, LibraryMember> getMembersMap() {
+		return membersMap;
 	}
 
 }

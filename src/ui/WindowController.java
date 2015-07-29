@@ -12,15 +12,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class WindowController extends Application {
-
-	public static HashMap<String, LibraryMember> LIBRARY_MEMBER_MAP;
-	
-	static {
-			DataAccess da = new DataAccessFacade();
-			LIBRARY_MEMBER_MAP = da.readMemberMap();
-			if(LIBRARY_MEMBER_MAP == null)
-				LIBRARY_MEMBER_MAP = new HashMap<String, LibraryMember>();
-	}
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
