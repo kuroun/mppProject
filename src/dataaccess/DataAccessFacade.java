@@ -12,6 +12,7 @@ import java.util.List;
 
 import business.Book;
 import business.BookCopy;
+import business.CheckoutRecordEntry;
 import business.LibraryMember;
 
 public class DataAccessFacade implements DataAccess {
@@ -29,8 +30,11 @@ public class DataAccessFacade implements DataAccess {
 	// implement
 	// }
 
+	private HashMap<String, Book> booksMap = readBooksMap();
+	private HashMap<String, LibraryMember> membersMap = readMemberMap();
 	public Book searchBook(String isbn) {
-		HashMap<String, Book> booksMap = readBooksMap();
+		//HashMap<String, Book> booksMap = readBooksMap();
+		booksMap = readBooksMap();
 		Book b = booksMap.get(isbn);
 		return b;
 	}
@@ -66,7 +70,7 @@ public class DataAccessFacade implements DataAccess {
 		return (HashMap<String, Book>) readFromStorage(StorageType.BOOKS);
 	}
 
-	// public HashMap<String, LibraryMember> readMemberMap() {
+
 
 	@SuppressWarnings("unchecked")
 	public HashMap<String, User> readUserMap() {
@@ -173,14 +177,21 @@ public class DataAccessFacade implements DataAccess {
 	}
 	
 	@Override
-	public boolean searchMember(LibraryMember member){
-		
-		return false;
+	public void saveNewCheckoutRecordEntry(LibraryMember member, Book book){
+		saveToStorage(StorageType.MEMBERS, membersMap);
+		saveToStorage(StorageType.BOOKS, booksMap);
+	}
+	@Override
+	public LibraryMember searchMember(String memberId){
+		membersMap = readMemberMap();
+		LibraryMember lm = membersMap.get(memberId);
+		return lm;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public HashMap<String, LibraryMember> readMemberMap() {
+		//System.out.println(readFromStorage(StorageType.MEMBERS).getClass().getSimpleName());
 		return (HashMap<String, LibraryMember>) readFromStorage(StorageType.MEMBERS);
 	}
 

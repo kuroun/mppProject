@@ -77,7 +77,7 @@ public class CheckOutBookFormInit {
     void checkOutForm(ActionEvent event) throws LibrarySystemException {
     	String memberId = txtMemberId.getText();
     	String isbn = txtISBN.getText();
-    	
+  
     	new SystemController().checkoutBook(memberId, isbn);
 
     }

@@ -1,7 +1,10 @@
 package business;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import ruleset.ExceptionDefinition;
 import ruleset.RuleException;
 import dataaccess.Auth;
@@ -101,22 +104,50 @@ public class SystemController implements ControllerInterface {
 	}
 
 	@Override
-	public void checkoutBook(String memberId, String isbn)
-			throws LibrarySystemException {
-<<<<<<< .merge_file_a05500
+	public void checkoutBook(String memberId, String isbn) throws LibrarySystemException {
 		try{
 			DataAccess da = new DataAccessFacade();
-			throw new LibrarySystemException("Member Id is not found");
+			LibraryMember m = da.searchMember(memberId);
+			Book b = da.searchBook(isbn);
+			if(m == null) throw new LibrarySystemException(LibrarySystemExceptionDefinition.MEMBER_NOT_FOUND);
+			else{
+				
+			}
+			if(b == null) throw new LibrarySystemException(LibrarySystemExceptionDefinition.BOOK_NOT_FOUND);
+			else{
+				
+				if(!b.isAvailable()){
+					throw new LibrarySystemException(LibrarySystemExceptionDefinition.BOOK_NOT_AVAILABLE);
+				}
+				else{
+					BookCopy cb = b.getNextAvailableCopy();
+					int getMaxCheckoutLenght = b.getMaxCheckoutLength();
+					da.searchMember(memberId).checkout(cb, LocalDate.now(), LocalDate.now().plusDays(getMaxCheckoutLenght));
+					da.saveNewCheckoutRecordEntry(m,b);
+					//System.out.println(m.getCheckoutRecord().getCheckoutRecordEntry());
+					
+				}
+			}
 			
 		}catch(LibrarySystemException e){
-			
+			Alert alert = messageDialog("WARNING");
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
 		}
 		
 	}
-=======
-		// TODO Auto-generated method stub
->>>>>>> .merge_file_a06780
-
+	
+	public Alert messageDialog(String type) {
+		Alert alert;
+		if (type.equalsIgnoreCase("warning"))
+			alert = new Alert(AlertType.WARNING);
+		else
+			alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Library System");
+		alert.setHeaderText(null);
+		return alert;
 	}
 
+
 }
+

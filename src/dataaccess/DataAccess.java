@@ -3,6 +3,7 @@ package dataaccess;
 import java.util.HashMap;
 
 import business.Book;
+import business.CheckoutRecordEntry;
 import business.LibraryMember;
 
 public interface DataAccess {
@@ -11,12 +12,15 @@ public interface DataAccess {
 
 	// /////save methods
 	public void saveNewMember(LibraryMember member);
-	public boolean searchMember(LibraryMember member);
+	public LibraryMember searchMember(String memberId);
 
 	// public void updateMember(LibraryMember member);
 
 	// save new book
 	public void saveNewBook(Book book);
+	
+	//Save new checkout record entry
+	public void saveNewCheckoutRecordEntry(LibraryMember member, Book book);
 
 	// ////read methods
 	public HashMap<String, Book> readBooksMap();
