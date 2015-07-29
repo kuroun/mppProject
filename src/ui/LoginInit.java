@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -37,7 +38,7 @@ public class LoginInit {
 	private AnchorPane header;
 
 	@FXML
-	private TextField txtPassword;
+	private PasswordField txtPassword;
 
 	@FXML
 	void login(ActionEvent event) {
@@ -58,8 +59,17 @@ public class LoginInit {
 			}
 
 			// After login success, open main frame window
-			Parent root = FXMLLoader.load(getClass().getResource(
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(
 					"MainFrame.fxml"));
+
+			Parent root = loader.load();
+
+			// Passing Username from login window to Mainframe window
+			// Directly from the caller to the controller
+			MainFrameInit controller = loader.<MainFrameInit> getController();
+			controller.initData(txtUsername.getText());
+			controller.initWindow(SystemController.currentAuth);
+
 			Stage stage = new Stage();
 			stage.setTitle("Library Systems");
 			stage.setScene(new Scene(root));

@@ -3,7 +3,6 @@ package ruleset;
 import java.util.HashMap;
 
 import ui.AddNewLibraryMemberInit;
-import javafx.application.Application;
 
 public final class RuleSetFactory {
 	
