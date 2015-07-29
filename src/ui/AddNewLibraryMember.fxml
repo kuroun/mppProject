@@ -33,18 +33,20 @@
       <Label text="State:" GridPane.rowIndex="6" />
       <Label text="Zip:" GridPane.rowIndex="7" />
       <Label text="Telephone number:" GridPane.rowIndex="8" />
-      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
          <children>
-            <Button fx:id="btnClear" mnemonicParsing="false" onAction="#clearInput" prefWidth="60.0" text="Clear" />
-            <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addUser" prefWidth="60.0" text="Add" />
+            <Button fx:id="btnClear" layoutX="91.0" layoutY="2.0" mnemonicParsing="false" onAction="#clearInput" prefWidth="100.0" text="Clear">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnAdd" layoutX="213.0" layoutY="2.0" mnemonicParsing="false" onAction="#addUser" prefWidth="100.0" text="Add">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-         <padding>
-            <Insets top="10.0" />
-         </padding>
-      </HBox>
+      </AnchorPane>
       <TextField fx:id="txtMemberID" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <TextField fx:id="txtFirstName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <TextField fx:id="txtLastName" GridPane.columnIndex="1" GridPane.rowIndex="3" />

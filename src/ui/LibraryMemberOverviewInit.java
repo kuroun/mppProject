@@ -1,6 +1,7 @@
 package ui;
 
 import java.net.URL;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -64,6 +65,7 @@ public class LibraryMemberOverviewInit {
 			Map.Entry<String, LibraryMember> member = (Map.Entry) it.next();
 			memberData.add(member.getValue());
 		}
+		
 		tblLibraryMember.setItems(memberData);
 
 		colMemeberID
