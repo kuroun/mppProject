@@ -59,4 +59,9 @@ final public class BookCopy implements Serializable {
 		isAvailable = b;
 	}
 	
+	@Override
+	public String toString(){
+		return Integer.toString(copyNum);
+	}
+	
 }

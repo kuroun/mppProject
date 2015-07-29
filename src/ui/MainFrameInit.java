@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import business.SystemController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,7 +54,7 @@ public class MainFrameInit {
 
 	@FXML
 	private Button btnViewAllLibraryMembers;
-
+	
 	@FXML
 	void addNewLibraryMember(ActionEvent event) {
 		try {
@@ -67,15 +68,22 @@ public class MainFrameInit {
 			e.printStackTrace();
 		}
 	}
-
+	public static CheckOutBookFormInit checkoutController;
 	@FXML
 	void checkoutABook(ActionEvent event) {
 		try {
-			Parent checkoutForm;
-			checkoutForm = FXMLLoader.load(getClass().getResource(
+//			Parent checkoutForm;
+//			checkoutForm = FXMLLoader.load(getClass().getResource(
+//					"CheckOutBookForm.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(
 					"CheckOutBookForm.fxml"));
+			System.out.println(loader);
+			Parent checkoutForm= loader.load();
 			operation.getChildren().clear();
 			operation.getChildren().add(checkoutForm);
+			checkoutController = loader.<CheckOutBookFormInit> getController();
+			//CheckOutBookFormInit controller = loader.<CheckOutBookFormInit> getController();
+		//controller.setRecordTable();
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

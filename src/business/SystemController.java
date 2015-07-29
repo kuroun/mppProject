@@ -3,10 +3,19 @@ package business;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import ui.CheckOutBookFormInit;
+import ui.MainFrameInit;
 import ui.WindowController;
 import dataaccess.Auth;
 import dataaccess.DataAccess;
@@ -139,6 +148,8 @@ public class SystemController implements ControllerInterface {
 					Alert alert = messageDialog("INFORMATION");
 					alert.setContentText("Checkout Book Entry was add successfully");
 					alert.showAndWait();
+					setLblStudentName(m);
+					queryCheckoutRecordToTable(m);
 					
 				}
 			}
@@ -151,6 +162,33 @@ public class SystemController implements ControllerInterface {
 		
 	}
 	
+	public void setLblStudentName(LibraryMember member){
+		MainFrameInit.checkoutController.getLblStudentName().setText(member.getFirstName() + " " + member.getLastName());
+	}
+	
+	public void queryCheckoutRecordToTable(LibraryMember member){
+		
+		ObservableList<CheckoutRecordEntry> bookRecordData = FXCollections
+				.observableArrayList();
+
+		List<CheckoutRecordEntry> record = member.getCheckoutRecord().getCheckoutRecordEntry();
+		System.out.println(record);
+
+		bookRecordData.addAll(record);
+		CheckOutBookFormInit table = new CheckOutBookFormInit();
+		System.out.println(table);
+		MainFrameInit.checkoutController.getTblCheckOutRecord().setItems(bookRecordData);
+		
+		MainFrameInit.checkoutController.getThCopyNumber().setCellValueFactory(new PropertyValueFactory<CheckoutRecordEntry, ObservableValue<String>>(
+				"bookCopy"));
+		MainFrameInit.checkoutController.getThCheckOutDate().setCellValueFactory(new PropertyValueFactory<CheckoutRecordEntry, LocalDate>(
+				"checkoutDate"));
+		MainFrameInit.checkoutController.getThDueDate().setCellValueFactory(new PropertyValueFactory<CheckoutRecordEntry, LocalDate>(
+				"dueDate"));
+
+
+		
+	}
 	public Alert messageDialog(String type) {
 		Alert alert;
 		if (type.equalsIgnoreCase("warning"))
