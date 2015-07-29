@@ -125,6 +125,9 @@ public class SystemController implements ControllerInterface {
 					da.searchMember(memberId).checkout(cb, LocalDate.now(), LocalDate.now().plusDays(getMaxCheckoutLenght));
 					da.saveNewCheckoutRecordEntry(m,b);
 					//System.out.println(m.getCheckoutRecord().getCheckoutRecordEntry());
+					Alert alert = messageDialog("INFORMATION");
+					alert.setContentText("Checkout Book Entry was add successfully");
+					alert.showAndWait();
 					
 				}
 			}
