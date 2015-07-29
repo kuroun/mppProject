@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="273.0" prefWidth="490.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="ui.LoginInit">
+<AnchorPane prefHeight="273.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.LoginInit">
    <children>
       <AnchorPane fx:id="header" layoutX="10.0" layoutY="10.0" prefHeight="72.0" prefWidth="435.0">
          <children>
@@ -34,8 +33,8 @@
             <Label text="User Name:" />
             <Label text="Password:" GridPane.rowIndex="1" />
             <TextField fx:id="txtUsername" GridPane.columnIndex="1" />
-            <TextField fx:id="txtPassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button fx:id="btnLogin" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="90.0" text="Log In" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <PasswordField fx:id="txtPassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

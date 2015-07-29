@@ -1,26 +1,18 @@
 package ui;
 
 import java.net.URL;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import ruleset.ExceptionDefinition;
-import ruleset.RuleException;
 import ruleset.RuleSet;
 import ruleset.RuleSetFactory;
 import business.Address;
 import business.ControllerInterface;
-import business.LibraryMember;
-import business.LibrarySystemException;
 import business.SystemController;
-import dataaccess.DataAccess;
-import dataaccess.DataAccessFacade;
 
 public class AddNewLibraryMemberInit {
 
@@ -174,6 +166,17 @@ public class AddNewLibraryMemberInit {
 		this.txtState = txtState;
 	}
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> 6ee5c9286ff8ede11aee26d0826ca932b8a4efae
+>>>>>>> b24182f7f8be29c4804ad846cd6a1bcb30aafe19
+>>>>>>> d9623d34f30e81b2fadff65ac43a4bb16addd94d
 	void clearWindow() {
 		txtMemberID.setText("");
 		txtFirstName.setText("");

@@ -1,9 +1,5 @@
 package business;
 
-import java.util.List;
-
-import dataaccess.DataAccess;
-import dataaccess.DataAccessFacade;
 
 public interface ControllerInterface {
 	public void addNewMember(String memberId, String firstName, String lastName,
