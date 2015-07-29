@@ -175,7 +175,10 @@ public class AddNewLibraryMemberInit {
 	}
 
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> cacc776b75dd44e4184f6c139ed1fae799359703
 	void clearWindow() {
 		txtMemberID.setText("");
 		txtFirstName.setText("");
