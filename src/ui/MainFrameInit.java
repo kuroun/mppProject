@@ -83,10 +83,22 @@ public class MainFrameInit {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 	@FXML
 	void addACopyOfExistingBook(ActionEvent event) {
-		operation.getChildren().clear();
+		try {
+			Parent addCopyBook;
+			addCopyBook = FXMLLoader.load(getClass().getResource(
+					"AddCopyOfBook.fxml"));
+			operation.getChildren().clear();
+			operation.getChildren().add(addCopyBook);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
