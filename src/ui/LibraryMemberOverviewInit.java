@@ -1,7 +1,6 @@
 package ui;
 
 import java.net.URL;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;

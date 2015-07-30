@@ -2,21 +2,8 @@ package ui;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.ResourceBundle;
 
-import ruleset.RuleSet;
-import ruleset.RuleSetFactory;
-import business.Book;
-import business.CheckOutRecordTable;
-import business.CheckoutRecordEntry;
-import business.LibraryMember;
-import business.LibrarySystemException;
-import business.SystemController;
-import javafx.beans.Observable;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -26,9 +13,13 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import ruleset.RuleSet;
+import ruleset.RuleSetFactory;
+import business.CheckOutRecordTable;
+import business.LibrarySystemException;
+import business.SystemController;
 
 public class CheckOutBookFormInit {
 

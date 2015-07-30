@@ -2,6 +2,7 @@ package ruleset;
 
 import java.util.HashMap;
 
+import ui.AddCopyOfBookInit;
 import ui.AddNewLibraryMemberInit;
 import ui.CheckOutBookFormInit;
 import ui.LoginInit;
@@ -18,6 +19,7 @@ public final class RuleSetFactory {
 		map.put(AddNewLibraryMemberInit.class, new AddNewLibraryMemberRuleSet());
 		map.put(CheckOutBookFormInit.class, new AddNewCheckoutRecordRuleSet());
 		map.put(LoginInit.class, new LoginRuleSet());
+		map.put(AddCopyOfBookInit.class, new AddACopyOfExistingBookRuleSet());
 	}
 	
 	public static RuleSet getRuleSet(Object c) {
