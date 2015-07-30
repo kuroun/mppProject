@@ -1,19 +1,9 @@
 package ui;
 
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.ResourceBundle;
 
-import dataaccess.DataAccess;
-import dataaccess.DataAccessFacade;
-import business.Book;
-import business.BookCopy;
-import business.ControllerInterface;
-import business.LibraryMember;
-import business.LibrarySystemException;
-import business.SystemController;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +18,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.text.Text;
+import ruleset.RuleException;
+import ruleset.RuleSet;
+import ruleset.RuleSetFactory;
+import business.Book;
+import business.ControllerInterface;
+import business.LibrarySystemException;
+import business.SystemController;
+import dataaccess.DataAccess;
+import dataaccess.DataAccessFacade;
 
 public class AddCopyOfBookInit {
 
@@ -41,7 +40,7 @@ public class AddCopyOfBookInit {
 	private TableColumn<Book, String> colBookISBN;
 
 	@FXML
-	private TableColumn<Book,String> colBookNumCopies;
+	private TableColumn<Book, String> colBookNumCopies;
 
 	@FXML
 	private TextField textISDN;
@@ -64,37 +63,39 @@ public class AddCopyOfBookInit {
 	@FXML
 	void handleSubmitButtonAction(ActionEvent event) {
 		setBookTable();
-		ControllerInterface sc = new SystemController();
-		String aIsbn = textISDN.getText();
+
 		try {
-			if (sc.addBookCopy(aIsbn)) {				
+
+			RuleSet rules = RuleSetFactory.getRuleSet(AddCopyOfBookInit.this);
+			rules.applyRule(AddCopyOfBookInit.this);
+
+			ControllerInterface sc = new SystemController();
+			String aIsbn = textISDN.getText();
+
+			if (sc.addBookCopy(aIsbn)) {
 				System.out.println(sc.searchBook(aIsbn).toString());
 				System.out.println(sc.searchBook(aIsbn).getCopies().length);
-				// for (BookCopy cBookCopy : sc.searchBook(aIsdn).getCopies()) {
-				// System.out.print(":"+cBookCopy.getCopyNum());
-				// }
 				Alert alert = new SystemController()
 						.messageDialog("INFORMATION");
-				alert.setContentText("This copy of book is added successfully to system.");
+				alert.setContentText("This copy of book is added successfully to system");
 				alert.showAndWait();
 				clearDisplay();
 				setBookTable();
-				System.out.println("after:"+sc.searchBook(aIsbn).getCopies().length);
+				System.out.println("after:"
+						+ sc.searchBook(aIsbn).getCopies().length);
 				actionDisplay.setText("\nThis book (ISBN:" + aIsbn + ") have "
 						+ sc.searchBook(aIsbn).getCopies().length
 						+ " copies now.");
-
-				// actionDisplay.setText("");
 			}
 
+		} catch (RuleException e) {
+			Alert alert = new SystemController().messageDialog("WARNING");
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
 		} catch (LibrarySystemException e) {
 			Alert alert = new SystemController().messageDialog("WARNING");
-			alert.setContentText("this book is not exist!");
+			alert.setContentText(e.getMessage());
 			alert.showAndWait();
-			clearWindow();
-			// actiontarget.setText("this book is not exist");
-			// e.printStackTrace();
-
 		}
 
 	}
@@ -149,39 +150,19 @@ public class AddCopyOfBookInit {
 		colBookAuthor
 				.setCellValueFactory(new PropertyValueFactory<Book, ObservableValue<String>>(
 						"authors"));
-		
-		 colBookNumCopies
-				 .setCellValueFactory(new PropertyValueFactory<Book, String>(
-				 "numCopies"));
-		 colBookISBN.setCellFactory(TextFieldTableCell.forTableColumn());
-		
 
-		/*
-		 * ObservableList<Book> BookData = FXCollections.observableArrayList();
-		 * DataAccess da = new DataAccessFacade(); HashMap<String, Book> map =
-		 * da.readBooksMap(); System.out.println(); Iterator it =
-		 * map.entrySet().iterator(); while (it.hasNext()) { Map.Entry<String,
-		 * Book> book = (Map.Entry) it.next(); BookData.add(book.getValue()); }
-		 * /*tbExistingCopiesBook.setItems(BookData);
-		 * 
-		 * colBookTitle .setCellValueFactory(new PropertyValueFactory<Book,
-		 * String>( "title"));
-		 * colBookTitle.setCellFactory(TextFieldTableCell.forTableColumn());
-		 * 
-		 * colBookISBN .setCellValueFactory(new PropertyValueFactory<Book,
-		 * String>( "isbn"));
-		 * colBookISBN.setCellFactory(TextFieldTableCell.forTableColumn());
-		 */
-
-		// colBookAuthor
-		// .setCellValueFactory(new PropertyValueFactory<Book, String>(
-		// "authors"));
-		// colBookAuthor.setCellFactory(TextFieldTableCell.forTableColumn());
-		//
-		// colBookNumCopies
-		// .setCellValueFactory(new PropertyValueFactory<Book, String>(
-		// "copies"));
-		// colBookNumCopies.setCellFactory(TextFieldTableCell.forTableColumn());
-
+		colBookNumCopies
+				.setCellValueFactory(new PropertyValueFactory<Book, String>(
+						"numCopies"));
+		colBookISBN.setCellFactory(TextFieldTableCell.forTableColumn());
 	}
+
+	public String getTextISDN() {
+		return textISDN.getText();
+	}
+
+	public String getTxtTitle() {
+		return txtTitle.getText();
+	}
+
 }
