@@ -29,7 +29,7 @@
             <RowConstraints maxHeight="38.0" minHeight="4.0" prefHeight="13.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="78.0" text="User Name:" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="78.0" text="User ID:" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="78.0" text="Password:" GridPane.rowIndex="1" />
             <TextField fx:id="txtUsername" prefHeight="30.0" prefWidth="170.0" GridPane.columnIndex="1" />
             <PasswordField fx:id="txtPassword" prefHeight="30.0" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
