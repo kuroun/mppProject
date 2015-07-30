@@ -15,4 +15,6 @@ public interface ControllerInterface {
 //	public CopyStatus computeStatus(BookCopy copy);
 	public Book searchBook(String isbn);
 	
+	public void printBookRecord(String memberId);
+	
 }

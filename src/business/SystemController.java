@@ -12,17 +12,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import ui.CheckOutBookFormInit;
 import ui.MainFrameInit;
 import ui.WindowController;
-
 import dataaccess.Auth;
 import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;
 import dataaccess.User;
+import dnl.utils.text.table.TextTable;
 
 public class SystemController implements ControllerInterface {
 	public static Auth currentAuth = null;
@@ -200,6 +199,64 @@ public class SystemController implements ControllerInterface {
 		alert.setTitle("Library System");
 		alert.setHeaderText(null);
 		return alert;
+	}
+
+	@Override
+	public void printBookRecord(String memberId) {
+		try{
+			DataAccess da = new DataAccessFacade();
+			LibraryMember m = da.searchMember(memberId);
+			if(m == null) throw new LibrarySystemException(LibrarySystemExceptionDefinition.MEMBER_NOT_FOUND);
+			else{
+				Alert alert = messageDialog("INFORMATION");
+				alert.setContentText("Member Id is found and Checkout Record is printing to console");
+				alert.showAndWait();
+				printToConsole(m);
+				
+			}
+		}catch(LibrarySystemException e){
+			Alert alert = messageDialog("WARNING");
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
+		}
+		
+	}
+	
+	public void printToConsole(LibraryMember member){
+		List<CheckoutRecordEntry> record = member.getCheckoutRecord().getCheckoutRecordEntry();
+		System.out.print("Member Name: " + member.getFirstName() + " " + member.getLastName());
+		System.out.println(", Member ID: " + member.getMemberID());
+		for(CheckoutRecordEntry x: record){
+			
+		}
+		String[] columnNames = {                                       
+		        "First Name",                                          
+		"Last Name",                                           
+		"Sport",                                               
+		"# of Years",                                          
+		"Vegetarian"};                                         
+		                                                               
+		                                                               
+		Object[][] data = {                                            
+		            {"Kathy", "Smith",                                     
+		     "Snowboarding", new Integer(5), new Boolean(false)},  
+		    {"John", "Doe",                                        
+		     "Rowing", new Integer(3), new Boolean(true)},         
+		    {"Sue", "Black",                                       
+		     "Knitting", new Integer(2), new Boolean(false)},      
+		    {"Jane", "White",                                      
+		     "Speed reading", new Integer(20), new Boolean(true)}, 
+		    {"Joe", "Brown",                                       
+		     "Pool", new Integer(10), new Boolean(false)}          
+		        };                                                         
+		                                                               
+		TextTable tt = new TextTable(columnNames, data);         
+		// this adds the numbering on the left      
+		tt.setAddRowNumbering(true);      
+		// sort by the first column                              
+		tt.setSort(0);                                                 
+		tt.printTable();                                               
+
 	}
 
 
