@@ -5,7 +5,10 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import business.Book;
+import business.CheckOutRecordTable;
 import business.CheckoutRecordEntry;
+import business.LibraryMember;
 import business.LibrarySystemException;
 import business.SystemController;
 import javafx.beans.Observable;
@@ -42,10 +45,10 @@ public class CheckOutBookFormInit {
     private ScrollPane pnCheckOutRecord;
 
     @FXML
-    private TableColumn<CheckoutRecordEntry, ObservableValue<String>> thCopyNumber;
+    private TableColumn<CheckOutRecordTable, Integer> thCopyNumber;
 
     @FXML
-    private TableColumn<CheckoutRecordEntry, LocalDate> thCheckOutDate;
+    private TableColumn<CheckOutRecordTable, LocalDate> thCheckOutDate;
 
     @FXML
     private TextField txtMemberId;
@@ -54,16 +57,16 @@ public class CheckOutBookFormInit {
     private Button btnCheckOut;
 
     @FXML
-    private TableView<CheckoutRecordEntry> tblCheckOutRecord;
+    private TableView<CheckOutRecordTable> tblCheckOutRecord;
 
     @FXML
-    private TableColumn<CheckoutRecordEntry, LocalDate> thDueDate;
+    private TableColumn<CheckOutRecordTable, LocalDate> thDueDate;
 
     @FXML
     private Label lblStudentName;
 
     @FXML
-    private TableColumn<CheckoutRecordEntry, ObservableValue<String>> thBook;
+    private TableColumn<CheckOutRecordTable, String> thBook;
 
     @FXML
     private Label lblMemberId;
@@ -95,20 +98,20 @@ public class CheckOutBookFormInit {
     }
 
 
-    public TableColumn<CheckoutRecordEntry, ObservableValue<String>> getThCopyNumber() {
+    public TableColumn<CheckOutRecordTable, Integer> getThCopyNumber() {
 		return thCopyNumber;
 	}
 
-	public TableColumn<CheckoutRecordEntry, LocalDate> getThCheckOutDate() {
+	public TableColumn<CheckOutRecordTable, LocalDate> getThCheckOutDate() {
 		return thCheckOutDate;
 	}
 
-	public TableColumn<CheckoutRecordEntry, LocalDate> getThDueDate() {
+	public TableColumn<CheckOutRecordTable, LocalDate> getThDueDate() {
 		return  thDueDate;
 	}
 
-	public TableColumn<CheckoutRecordEntry, ObservableValue<String>> getThBook() {
-		return (TableColumn<CheckoutRecordEntry, ObservableValue<String>>) thBook;
+	public TableColumn<CheckOutRecordTable, String> getThBook() {
+		return thBook;
 	}
 
 	public Label getLblStudentName() {
@@ -119,13 +122,13 @@ public class CheckOutBookFormInit {
 		return pnCheckOutRecord;
 	}
 
-	public TableView<CheckoutRecordEntry> getTblCheckOutRecord() {
+	public TableView<CheckOutRecordTable> getTblCheckOutRecord() {
 		return  tblCheckOutRecord;
 	}
 
 	
 
-    @FXML
+   @FXML
     void initialize() {
         assert vbCheckOutRecord != null : "fx:id=\"vbCheckOutRecord\" was not injected: check your FXML file 'CheckOutBookForm.fxml'.";
         assert pnCheckOutForm != null : "fx:id=\"pnCheckOutForm\" was not injected: check your FXML file 'CheckOutBookForm.fxml'.";
