@@ -3,6 +3,7 @@ package ruleset;
 import java.util.HashMap;
 
 import ui.AddNewLibraryMemberInit;
+import ui.CheckOutBookFormInit;
 
 public final class RuleSetFactory {
 	
@@ -13,6 +14,7 @@ public final class RuleSetFactory {
 	static HashMap<Class<? extends Object>, RuleSet> map = new HashMap<>();
 	static {
 		map.put(AddNewLibraryMemberInit.class, new AddNewLibraryMemberRuleSet());
+		map.put(CheckOutBookFormInit.class, new AddNewCheckoutRecordRuleSet());
 		
 	}
 	
