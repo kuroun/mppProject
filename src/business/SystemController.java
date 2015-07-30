@@ -59,7 +59,7 @@ public class SystemController implements ControllerInterface {
 		else {
 			LibraryMember mem = new LibraryMember(firstName, lastName,
 					telNumber, addr, memberId);
-			DataAccessFacade da = new DataAccessFacade();
+			DataAccess da = new DataAccessFacade();
 			da.saveNewMember(mem);
 		}
 
