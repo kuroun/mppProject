@@ -87,6 +87,37 @@ public class MainFrameInit {
 	}
 
 	@FXML
+	private Button btnLogout;
+
+	@FXML
+	private Text txtUserType;
+
+	@FXML
+	void logout(ActionEvent event) {
+		// When user click on logout, then close the current window and open
+		// login window
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+
+		// Close MainFrame window
+		Window window = header.getScene().getWindow();
+		if (window instanceof Stage) {
+			((Stage) window).close();
+		}
+
+		// Open login window
+		try {
+			Parent root = loader.load();
+			Stage stage = new Stage();
+			stage.setTitle("Library Systems");
+			stage.setScene(new Scene(root));
+			stage.show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
 	void addNewLibraryMember(ActionEvent event) {
 		try {
 			Parent addMemberForm;
@@ -99,6 +130,7 @@ public class MainFrameInit {
 			e.printStackTrace();
 		}
 	}
+<<<<<<< HEAD
 	public static CheckOutBookFormInit checkoutController;
 	@FXML
 	void checkoutABook(ActionEvent event) {
@@ -115,6 +147,27 @@ public class MainFrameInit {
 			checkoutController = loader.<CheckOutBookFormInit> getController();
 			//CheckOutBookFormInit controller = loader.<CheckOutBookFormInit> getController();
 		//controller.setRecordTable();
+=======
+
+	public static CheckOutBookFormInit checkoutController;
+
+	@FXML
+	void checkoutABook(ActionEvent event) {
+		try {
+			// Parent checkoutForm;
+			// checkoutForm = FXMLLoader.load(getClass().getResource(
+			// "CheckOutBookForm.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(
+					"CheckOutBookForm.fxml"));
+			System.out.println(loader);
+			Parent checkoutForm = loader.load();
+			operation.getChildren().clear();
+			operation.getChildren().add(checkoutForm);
+			checkoutController = loader.<CheckOutBookFormInit> getController();
+			// CheckOutBookFormInit controller = loader.<CheckOutBookFormInit>
+			// getController();
+			// controller.setRecordTable();
+>>>>>>> 1163e225a47003e14479fa1042c3e24417308b20
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -181,20 +234,25 @@ public class MainFrameInit {
 		assert operation != null : "fx:id=\"operation\" was not injected: check your FXML file 'MainFrame.fxml'.";
 		assert btnViewAllLibraryMembers != null : "fx:id=\"btnViewAllLibraryMembers\" was not injected: check your FXML file 'MainFrame.fxml'.";
 		assert btnLogout != null : "fx:id=\"btnLogout\" was not injected: check your FXML file 'MainFrame.fxml'.";
+<<<<<<< HEAD
+=======
+		assert txtUserType != null : "fx:id=\"txtUserType\" was not injected: check your FXML file 'MainFrame.fxml'.";
+>>>>>>> 1163e225a47003e14479fa1042c3e24417308b20
 	}
 
-	void initData(String username) {
+	void initData(String username, String userType) {
 		txtUserName.setText(username);
+		txtUserType.setText(userType);
 	}
 
 	void initWindow(Auth auth) {
 		System.out.println(auth);
 		if (auth.equals(Auth.ADMIN)) {
-			menu.getChildren().remove(btnAddCopyExistingBook);
 			menu.getChildren().remove(btnCheckoutBook);
 		} else if (auth.equals(Auth.LIBRARIAN)) {
 			menu.getChildren().remove(btnAddNewLibraryMember);
 			menu.getChildren().remove(btnViewAllLibraryMembers);
+			menu.getChildren().remove(btnAddCopyExistingBook);
 		}
 	}
 }

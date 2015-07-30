@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import ruleset.LoginRuleSet;
 import ruleset.RuleSet;
+import ruleset.RuleSetFactory;
 import business.SystemController;
 
 public class LoginInit {
@@ -44,7 +45,7 @@ public class LoginInit {
 	void login(ActionEvent event) {
 		String username = txtUsername.getText();
 		String password = txtPassword.getText();
-		RuleSet loginRuleSet = new LoginRuleSet();
+		RuleSet loginRuleSet = RuleSetFactory.getRuleSet(LoginInit.this);
 		try {
 			loginRuleSet.applyRule(LoginInit.this);
 
@@ -67,8 +68,9 @@ public class LoginInit {
 			// Passing Username from login window to Mainframe window
 			// Directly from the caller to the controller
 			MainFrameInit controller = loader.<MainFrameInit> getController();
-			controller.initData(txtUsername.getText());
 			controller.initWindow(SystemController.currentAuth);
+			controller.initData(txtUsername.getText(), SystemController.currentAuth.toString());
+			
 
 			Stage stage = new Stage();
 			stage.setTitle("Library Systems");

@@ -5,6 +5,11 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
+<<<<<<< HEAD
+=======
+import ruleset.RuleSet;
+import ruleset.RuleSetFactory;
+>>>>>>> 1163e225a47003e14479fa1042c3e24417308b20
 import business.Book;
 import business.CheckOutRecordTable;
 import business.CheckoutRecordEntry;
@@ -17,6 +22,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -93,8 +99,21 @@ public class CheckOutBookFormInit {
     void checkOutForm(ActionEvent event) throws LibrarySystemException {
     	String memberId = txtMemberId.getText();
     	String isbn = txtISBN.getText();
+<<<<<<< HEAD
   
     	new SystemController().checkoutBook(memberId, isbn);
+=======
+    	try{
+    		RuleSet AddNewCheckoutRecordRuleSet = RuleSetFactory
+					.getRuleSet(CheckOutBookFormInit.this);
+    		AddNewCheckoutRecordRuleSet.applyRule(CheckOutBookFormInit.this);
+    		new SystemController().checkoutBook(memberId, isbn);
+    	}catch(Exception e){
+    		Alert alert = new SystemController().messageDialog("WARNING");
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
+    	}
+>>>>>>> 1163e225a47003e14479fa1042c3e24417308b20
     }
 
 
@@ -126,9 +145,23 @@ public class CheckOutBookFormInit {
 		return  tblCheckOutRecord;
 	}
 
+<<<<<<< HEAD
 	
 
    @FXML
+=======
+   public TextField getTxtMemberId() {
+		return txtMemberId;
+	}
+
+
+	public TextField getTxtISBN() {
+		return txtISBN;
+	}
+
+
+@FXML
+>>>>>>> 1163e225a47003e14479fa1042c3e24417308b20
     void initialize() {
         assert vbCheckOutRecord != null : "fx:id=\"vbCheckOutRecord\" was not injected: check your FXML file 'CheckOutBookForm.fxml'.";
         assert pnCheckOutForm != null : "fx:id=\"pnCheckOutForm\" was not injected: check your FXML file 'CheckOutBookForm.fxml'.";

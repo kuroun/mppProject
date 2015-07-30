@@ -59,7 +59,7 @@ public class SystemController implements ControllerInterface {
 		else {
 			LibraryMember mem = new LibraryMember(firstName, lastName,
 					telNumber, addr, memberId);
-			DataAccessFacade da = new DataAccessFacade();
+			DataAccess da = new DataAccessFacade();
 			da.saveNewMember(mem);
 		}
 
@@ -191,7 +191,10 @@ public class SystemController implements ControllerInterface {
 		MainFrameInit.checkoutController.getThDueDate().setCellValueFactory(new PropertyValueFactory<CheckOutRecordTable, LocalDate>("dueDate"));
 		
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 1163e225a47003e14479fa1042c3e24417308b20
 	public Alert messageDialog(String type) {
 		Alert alert;
 		if (type.equalsIgnoreCase("warning"))
