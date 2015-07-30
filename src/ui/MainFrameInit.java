@@ -130,15 +130,40 @@ public class MainFrameInit {
 
 	@FXML
 	void addACopyOfExistingBook(ActionEvent event) {
+		// try {
+		// Parent addCopyBook;
+		// addCopyBook = FXMLLoader.load(getClass().getResource(
+		// "AddCopyOfBook.fxml"));
+		// operation.getChildren().clear();
+		// operation.getChildren().add(addCopyBook);
+		//
+		// } catch (IOException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+
+		// Cheng
 		try {
-			Parent addCopyBook;
-			addCopyBook = FXMLLoader.load(getClass().getResource(
+			/*
+			 * Parent addCopyBook; addCopyBook =
+			 * FXMLLoader.load(getClass().getResource( "AddCopyOfBook.fxml"));
+			 * operation.getChildren().clear();
+			 * operation.getChildren().add(addCopyBook);
+			 */
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(
 					"AddCopyOfBook.fxml"));
+			Parent root = loader.load();
+
 			operation.getChildren().clear();
-			operation.getChildren().add(addCopyBook);
+
+			operation.getChildren().add(root);
+
+			AddCopyOfBookInit controller = loader
+					.<AddCopyOfBookInit> getController();
+			controller.setBookTable();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
