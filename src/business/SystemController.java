@@ -226,36 +226,15 @@ public class SystemController implements ControllerInterface {
 		List<CheckoutRecordEntry> record = member.getCheckoutRecord().getCheckoutRecordEntry();
 		System.out.print("Member Name: " + member.getFirstName() + " " + member.getLastName());
 		System.out.println(", Member ID: " + member.getMemberID());
+		String leftAlignFormat = "| %-32s | %-10d | %-13s | %-13s |%n";
+
+		System.out.format("+----------------------------------+------------+---------------+---------------+%n");
+		System.out.printf("| Book Title                       |Copy Number | Checkout Date | Due Date      |%n");
+		System.out.format("+----------------------------------+------------+---------------+---------------+%n");
 		for(CheckoutRecordEntry x: record){
-			
+			System.out.format(leftAlignFormat, x.getBookCopy().getBook().getTitle(), x.getBookCopy().getCopyNum(), x.getCheckoutDate().toString(), x.getDueDate().toString());
 		}
-		String[] columnNames = {                                       
-		        "First Name",                                          
-		"Last Name",                                           
-		"Sport",                                               
-		"# of Years",                                          
-		"Vegetarian"};                                         
-		                                                               
-		                                                               
-		Object[][] data = {                                            
-		            {"Kathy", "Smith",                                     
-		     "Snowboarding", new Integer(5), new Boolean(false)},  
-		    {"John", "Doe",                                        
-		     "Rowing", new Integer(3), new Boolean(true)},         
-		    {"Sue", "Black",                                       
-		     "Knitting", new Integer(2), new Boolean(false)},      
-		    {"Jane", "White",                                      
-		     "Speed reading", new Integer(20), new Boolean(true)}, 
-		    {"Joe", "Brown",                                       
-		     "Pool", new Integer(10), new Boolean(false)}          
-		        };                                                         
-		                                                               
-		TextTable tt = new TextTable(columnNames, data);         
-		// this adds the numbering on the left      
-		tt.setAddRowNumbering(true);      
-		// sort by the first column                              
-		tt.setSort(0);                                                 
-		tt.printTable();                                               
+		System.out.format("+----------------------------------+------------+---------------+---------------+%n");                                              
 
 	}
 

@@ -63,6 +63,9 @@ public class MainFrameInit {
 
 	@FXML
 	private Text txtUserType;
+	
+	@FXML
+    private Button btnPrintCheckoutRecord;
 
 	@FXML
 	void logout(ActionEvent event) {
@@ -108,9 +111,6 @@ public class MainFrameInit {
 	@FXML
 	void checkoutABook(ActionEvent event) {
 		try {
-			// Parent checkoutForm;
-			// checkoutForm = FXMLLoader.load(getClass().getResource(
-			// "CheckOutBookForm.fxml"));
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(
 					"CheckOutBookForm.fxml"));
 			System.out.println(loader);
@@ -118,9 +118,6 @@ public class MainFrameInit {
 			operation.getChildren().clear();
 			operation.getChildren().add(checkoutForm);
 			checkoutController = loader.<CheckOutBookFormInit> getController();
-			// CheckOutBookFormInit controller = loader.<CheckOutBookFormInit>
-			// getController();
-			// controller.setRecordTable();
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -188,21 +185,37 @@ public class MainFrameInit {
 		}
 	}
 
-	@FXML
-	void initialize() {
-		assert txtUserName != null : "fx:id=\"txtUserName\" was not injected: check your FXML file 'MainFrame.fxml'.";
-		assert sppFunction != null : "fx:id=\"sppFunction\" was not injected: check your FXML file 'MainFrame.fxml'.";
-		assert mainWindow != null : "fx:id=\"mainWindow\" was not injected: check your FXML file 'MainFrame.fxml'.";
-		assert btnCheckoutBook != null : "fx:id=\"btnCheckoutBook\" was not injected: check your FXML file 'MainFrame.fxml'.";
-		assert header != null : "fx:id=\"header\" was not injected: check your FXML file 'MainFrame.fxml'.";
-		assert btnAddNewLibraryMember != null : "fx:id=\"btnAddNewLibraryMember\" was not injected: check your FXML file 'MainFrame.fxml'.";
-		assert btnAddCopyExistingBook != null : "fx:id=\"btnAddCopyExistingBook\" was not injected: check your FXML file 'MainFrame.fxml'.";
-		assert menu != null : "fx:id=\"menu\" was not injected: check your FXML file 'MainFrame.fxml'.";
-		assert operation != null : "fx:id=\"operation\" was not injected: check your FXML file 'MainFrame.fxml'.";
-		assert btnViewAllLibraryMembers != null : "fx:id=\"btnViewAllLibraryMembers\" was not injected: check your FXML file 'MainFrame.fxml'.";
-		assert btnLogout != null : "fx:id=\"btnLogout\" was not injected: check your FXML file 'MainFrame.fxml'.";
-		assert txtUserType != null : "fx:id=\"txtUserType\" was not injected: check your FXML file 'MainFrame.fxml'.";
-	}
+	  @FXML
+	    void printCheckoutRecordForm(ActionEvent event) {
+		  try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource(
+						"PrintBookRecordOfMember.fxml"));
+				Parent printRecord = loader.load();
+				operation.getChildren().clear();
+				operation.getChildren().add(printRecord);
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    }
+	  @FXML
+	    void initialize() {
+	        assert txtUserName != null : "fx:id=\"txtUserName\" was not injected: check your FXML file 'MainFrame.fxml'.";
+	        assert btnLogout != null : "fx:id=\"btnLogout\" was not injected: check your FXML file 'MainFrame.fxml'.";
+	        assert mainWindow != null : "fx:id=\"mainWindow\" was not injected: check your FXML file 'MainFrame.fxml'.";
+	        assert btnAddNewLibraryMember != null : "fx:id=\"btnAddNewLibraryMember\" was not injected: check your FXML file 'MainFrame.fxml'.";
+	        assert menu != null : "fx:id=\"menu\" was not injected: check your FXML file 'MainFrame.fxml'.";
+	        assert btnPrintCheckoutRecord != null : "fx:id=\"btnPrintCheckoutRecord\" was not injected: check your FXML file 'MainFrame.fxml'.";
+	        assert sppFunction != null : "fx:id=\"sppFunction\" was not injected: check your FXML file 'MainFrame.fxml'.";
+	        assert btnCheckoutBook != null : "fx:id=\"btnCheckoutBook\" was not injected: check your FXML file 'MainFrame.fxml'.";
+	        assert header != null : "fx:id=\"header\" was not injected: check your FXML file 'MainFrame.fxml'.";
+	        assert btnAddCopyExistingBook != null : "fx:id=\"btnAddCopyExistingBook\" was not injected: check your FXML file 'MainFrame.fxml'.";
+	        assert txtUserType != null : "fx:id=\"txtUserType\" was not injected: check your FXML file 'MainFrame.fxml'.";
+	        assert operation != null : "fx:id=\"operation\" was not injected: check your FXML file 'MainFrame.fxml'.";
+	        assert btnViewAllLibraryMembers != null : "fx:id=\"btnViewAllLibraryMembers\" was not injected: check your FXML file 'MainFrame.fxml'.";
+
+	    }
 
 	void initData(String username, String userType) {
 		txtUserName.setText(username);
@@ -210,9 +223,10 @@ public class MainFrameInit {
 	}
 
 	void initWindow(Auth auth) {
-		System.out.println(auth);
+		//System.out.println(auth);
 		if (auth.equals(Auth.ADMIN)) {
 			menu.getChildren().remove(btnCheckoutBook);
+			menu.getChildren().remove(btnPrintCheckoutRecord);
 		} else if (auth.equals(Auth.LIBRARIAN)) {
 			menu.getChildren().remove(btnAddNewLibraryMember);
 			menu.getChildren().remove(btnViewAllLibraryMembers);

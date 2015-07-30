@@ -38,7 +38,8 @@
                   <Button fx:id="btnCheckoutBook" mnemonicParsing="false" onAction="#checkoutABook" prefHeight="26.0" prefWidth="195.0" text="Checkout a book" />
                   <Button fx:id="btnAddCopyExistingBook" mnemonicParsing="false" onAction="#addACopyOfExistingBook" prefHeight="26.0" prefWidth="195.0" text="Add a copy of existing book" />
                   <Button fx:id="btnViewAllLibraryMembers" mnemonicParsing="false" onAction="#viewAllLibraryMembers" prefHeight="26.0" prefWidth="195.0" text="View all library members" />
-                  <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#logout" prefHeight="26.0" prefWidth="195.0" text="Log out" />
+                  <Button fx:id="btnPrintCheckoutRecord" mnemonicParsing="false" onAction="#printCheckoutRecordForm" prefHeight="26.0" prefWidth="195.0" text="Print Checkout Record" />
+                  <Button fx:id="btnLogout1" mnemonicParsing="false" onAction="#logout" prefHeight="26.0" prefWidth="195.0" text="Log out" />
                </children>
                <opaqueInsets>
                   <Insets />
