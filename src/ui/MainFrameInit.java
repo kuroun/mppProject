@@ -57,9 +57,12 @@ public class MainFrameInit {
 
 	@FXML
 	private Button btnViewAllLibraryMembers;
-	
+
 	@FXML
 	private Button btnLogout;
+
+	@FXML
+	private Text txtUserType;
 
 	@FXML
 	void logout(ActionEvent event) {
@@ -99,22 +102,25 @@ public class MainFrameInit {
 			e.printStackTrace();
 		}
 	}
+
 	public static CheckOutBookFormInit checkoutController;
+
 	@FXML
 	void checkoutABook(ActionEvent event) {
 		try {
-//			Parent checkoutForm;
-//			checkoutForm = FXMLLoader.load(getClass().getResource(
-//					"CheckOutBookForm.fxml"));
+			// Parent checkoutForm;
+			// checkoutForm = FXMLLoader.load(getClass().getResource(
+			// "CheckOutBookForm.fxml"));
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(
 					"CheckOutBookForm.fxml"));
 			System.out.println(loader);
-			Parent checkoutForm= loader.load();
+			Parent checkoutForm = loader.load();
 			operation.getChildren().clear();
 			operation.getChildren().add(checkoutForm);
 			checkoutController = loader.<CheckOutBookFormInit> getController();
-			//CheckOutBookFormInit controller = loader.<CheckOutBookFormInit> getController();
-		//controller.setRecordTable();
+			// CheckOutBookFormInit controller = loader.<CheckOutBookFormInit>
+			// getController();
+			// controller.setRecordTable();
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -170,10 +176,12 @@ public class MainFrameInit {
 		assert operation != null : "fx:id=\"operation\" was not injected: check your FXML file 'MainFrame.fxml'.";
 		assert btnViewAllLibraryMembers != null : "fx:id=\"btnViewAllLibraryMembers\" was not injected: check your FXML file 'MainFrame.fxml'.";
 		assert btnLogout != null : "fx:id=\"btnLogout\" was not injected: check your FXML file 'MainFrame.fxml'.";
+		assert txtUserType != null : "fx:id=\"txtUserType\" was not injected: check your FXML file 'MainFrame.fxml'.";
 	}
 
-	void initData(String username) {
+	void initData(String username, String userType) {
 		txtUserName.setText(username);
+		txtUserType.setText(userType);
 	}
 
 	void initWindow(Auth auth) {

@@ -67,8 +67,9 @@ public class LoginInit {
 			// Passing Username from login window to Mainframe window
 			// Directly from the caller to the controller
 			MainFrameInit controller = loader.<MainFrameInit> getController();
-			controller.initData(txtUsername.getText());
 			controller.initWindow(SystemController.currentAuth);
+			controller.initData(txtUsername.getText(), SystemController.currentAuth.toString());
+			
 
 			Stage stage = new Stage();
 			stage.setTitle("Library Systems");
