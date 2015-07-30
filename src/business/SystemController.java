@@ -12,14 +12,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-<<<<<<< HEAD
+
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import ui.CheckOutBookFormInit;
 import ui.MainFrameInit;
 import ui.WindowController;
-=======
->>>>>>> 01d49db63ff599c7a919fd3526638117ca5fd970
+
 import dataaccess.Auth;
 import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;
