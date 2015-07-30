@@ -18,6 +18,15 @@ final public class Book implements Serializable {
 	private String isbn;
 	private String title;
 	private int maxCheckoutLength;
+	private String numCopies;
+	
+	{
+	if(copies!=null){
+		ControllerInterface sc = new SystemController();
+		this.numCopies=String.valueOf(sc.searchBook(this.isbn).getCopies().length);
+	}	
+	}
+
 	
 	public Book(String isbn, String title, int maxCheckoutLength, List<Author> authors) {
 		this.isbn = isbn;
@@ -25,6 +34,7 @@ final public class Book implements Serializable {
 		this.maxCheckoutLength = maxCheckoutLength;
 		this.authors = Collections.unmodifiableList(authors);
 		copies = new BookCopy[]{new BookCopy(this, 1, true)};
+		//this.numCopies=String.valueOf(copies.length);
 		
 	}
 	
@@ -85,6 +95,9 @@ final public class Book implements Serializable {
 	public String getTitle() {
 		return title;
 	}
+	
+
+
 	public BookCopy[] getCopies() {
 		return copies;
 	}
@@ -97,6 +110,8 @@ final public class Book implements Serializable {
 		return isbn;
 	}
 	
+
+
 	public BookCopy getNextAvailableCopy() {	
 		Optional<BookCopy> optional 
 			= Arrays.stream(copies)
