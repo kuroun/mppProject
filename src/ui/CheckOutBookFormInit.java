@@ -1,10 +1,20 @@
 package ui;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import business.Book;
+import business.CheckOutRecordTable;
+import business.CheckoutRecordEntry;
+import business.LibraryMember;
 import business.LibrarySystemException;
 import business.SystemController;
+import javafx.beans.Observable;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,9 +23,9 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-
 
 public class CheckOutBookFormInit {
 
@@ -24,9 +34,6 @@ public class CheckOutBookFormInit {
 
     @FXML
     private URL location;
-
-    @FXML
-    private Label lblNotify;
 
     @FXML
     private VBox vbCheckOutRecord;
@@ -38,10 +45,10 @@ public class CheckOutBookFormInit {
     private ScrollPane pnCheckOutRecord;
 
     @FXML
-    private TableColumn<?, ?> thCopyNumber;
+    private TableColumn<CheckOutRecordTable, Integer> thCopyNumber;
 
     @FXML
-    private TableColumn<?, ?> thCheckOutDate;
+    private TableColumn<CheckOutRecordTable, LocalDate> thCheckOutDate;
 
     @FXML
     private TextField txtMemberId;
@@ -50,16 +57,16 @@ public class CheckOutBookFormInit {
     private Button btnCheckOut;
 
     @FXML
-    private TableView<?> tblCheckOutRecord;
+    private TableView<CheckOutRecordTable> tblCheckOutRecord;
 
     @FXML
-    private TableColumn<?, ?> thDueDate;
+    private TableColumn<CheckOutRecordTable, LocalDate> thDueDate;
 
     @FXML
     private Label lblStudentName;
 
     @FXML
-    private TableColumn<?, ?> thBook;
+    private TableColumn<CheckOutRecordTable, String> thBook;
 
     @FXML
     private Label lblMemberId;
@@ -73,23 +80,56 @@ public class CheckOutBookFormInit {
     @FXML
     private Label lblISBN;
 
+    
+//    //Constructor
+//    public CheckOutBookFormInit(){
+//    }
+//    //Singleton pattern
+//    private static CheckOutBookFormInit instance = new CheckOutBookFormInit();
+//    public static CheckOutBookFormInit getInstance(){
+//    	return instance;
+//    }
     @FXML
     void checkOutForm(ActionEvent event) throws LibrarySystemException {
     	String memberId = txtMemberId.getText();
     	String isbn = txtISBN.getText();
   
     	new SystemController().checkoutBook(memberId, isbn);
-
     }
 
-//    @FXML
-//    void 1db522(ActionEvent event) {
-//
-//    }
 
-    @FXML
+    public TableColumn<CheckOutRecordTable, Integer> getThCopyNumber() {
+		return thCopyNumber;
+	}
+
+	public TableColumn<CheckOutRecordTable, LocalDate> getThCheckOutDate() {
+		return thCheckOutDate;
+	}
+
+	public TableColumn<CheckOutRecordTable, LocalDate> getThDueDate() {
+		return  thDueDate;
+	}
+
+	public TableColumn<CheckOutRecordTable, String> getThBook() {
+		return thBook;
+	}
+
+	public Label getLblStudentName() {
+		return lblStudentName;
+	}
+	
+	public ScrollPane getPnCheckOutRecord() {
+		return pnCheckOutRecord;
+	}
+
+	public TableView<CheckOutRecordTable> getTblCheckOutRecord() {
+		return  tblCheckOutRecord;
+	}
+
+	
+
+   @FXML
     void initialize() {
-        assert lblNotify != null : "fx:id=\"lblNotify\" was not injected: check your FXML file 'CheckOutBookForm.fxml'.";
         assert vbCheckOutRecord != null : "fx:id=\"vbCheckOutRecord\" was not injected: check your FXML file 'CheckOutBookForm.fxml'.";
         assert pnCheckOutForm != null : "fx:id=\"pnCheckOutForm\" was not injected: check your FXML file 'CheckOutBookForm.fxml'.";
         assert pnCheckOutRecord != null : "fx:id=\"pnCheckOutRecord\" was not injected: check your FXML file 'CheckOutBookForm.fxml'.";

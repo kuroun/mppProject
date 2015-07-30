@@ -53,8 +53,12 @@ public class DataAccessFacade implements DataAccess {
 	public Book searchBook(String isbn) {
 		// HashMap<String, Book> booksMap = readBooksMap();
 		//booksMap = readBooksMap();
-		Book b = booksMap.get(isbn);
-		return b;
+//		Book b = booksMap.get(isbn);
+//		return b;
+		// HashMap<String, Book> booksMap = readBooksMap();
+				booksMap = readBooksMap();
+				Book b = booksMap.get(isbn);
+				return b;
 	}
 
 	public Auth login(String id, String pwd) {

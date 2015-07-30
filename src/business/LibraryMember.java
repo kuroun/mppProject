@@ -3,6 +3,7 @@ package business;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class LibraryMember extends Person implements Serializable {
 	
@@ -33,4 +34,11 @@ public class LibraryMember extends Person implements Serializable {
 		checkoutRecord.addEntry(newBookEntry);
 	}
 	
+	public static final Comparator MEMBER_ID = new Comparator(){
+		public int compare(Object o1, Object o2) {
+			Integer memberID1 = Integer.parseInt(((LibraryMember)o1).getMemberID());
+			Integer memberID2 = Integer.parseInt(((LibraryMember)o2).getMemberID());
+			return memberID1.compareTo(memberID2);
+		}
+	};
 }

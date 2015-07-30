@@ -2,6 +2,7 @@ package ui;
 
 import java.net.URL;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -58,14 +59,15 @@ public class LibraryMemberOverviewInit {
 	public void setMemberTable() {
 		ObservableList<LibraryMember> memberData = FXCollections
 				.observableArrayList();
-		//DataAccess da = new DataAccessFacade();
+		// DataAccess da = new DataAccessFacade();
 		HashMap<String, LibraryMember> map = DataAccessFacade.membersMap;
 		Iterator it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry<String, LibraryMember> member = (Map.Entry) it.next();
 			memberData.add(member.getValue());
 		}
-		
+		Collections.sort(memberData, LibraryMember.MEMBER_ID);
+
 		tblLibraryMember.setItems(memberData);
 
 		colMemeberID
