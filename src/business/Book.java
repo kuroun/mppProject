@@ -18,8 +18,9 @@ final public class Book implements Serializable {
 	private String isbn;
 	private String title;
 	private int maxCheckoutLength;
-	private String numCopies;
-	
+	//Cheng
+    private String numCopies;
+    //Cheng
 	{
 	if(copies!=null){
 		ControllerInterface sc = new SystemController();

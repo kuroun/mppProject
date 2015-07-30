@@ -7,13 +7,13 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="641.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AddCopyOfBookInit">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AddCopyOfBookInit">
    <children>
-      <GridPane>
+      <GridPane prefHeight="246.0" prefWidth="586.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="151.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="32.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="484.0" minWidth="10.0" prefWidth="224.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="484.0" minWidth="10.0" prefWidth="200.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="484.0" minWidth="10.0" prefWidth="142.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="484.0" minWidth="10.0" prefWidth="99.0" />
         </columnConstraints>
@@ -30,7 +30,7 @@
             <RowConstraints maxHeight="22.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text fx:id="txtTitle" fill="#060a00" stroke="#1b1b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Input A Copy of Book" textAlignment="CENTER" wrappingWidth="650.830078125" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <Text fx:id="txtTitle" fill="#060a00" stroke="#1b1b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Input A Copy of Book" textAlignment="CENTER" wrappingWidth="587.830078125" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -41,29 +41,29 @@
                </font>
             </Label>
             <TextField fx:id="textISDN" prefHeight="30.0" prefWidth="370.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-            <Text fx:id="actionDisplay" fill="#0cc8f2" strokeType="OUTSIDE" strokeWidth="0.0" text="________________________________" textAlignment="CENTER" wrappingWidth="652.9375" GridPane.columnSpan="2" GridPane.rowIndex="6">
+            <Text fx:id="actionDisplay" fill="#0cc8f2" strokeType="OUTSIDE" strokeWidth="0.0" text="________________________________" textAlignment="CENTER" wrappingWidth="586.9375" GridPane.columnSpan="2" GridPane.rowIndex="6">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Existing Copies of Book Information" textAlignment="CENTER" wrappingWidth="652.13671875" GridPane.columnSpan="2" GridPane.rowIndex="8">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Existing Copies of Book Information" textAlignment="CENTER" wrappingWidth="588.13671875" GridPane.columnSpan="2" GridPane.rowIndex="8">
                <font>
                   <Font name="System Italic" size="21.0" />
                </font>
             </Text>
-            <Button fx:id="btnCopy" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="25.0" prefWidth="156.0" text="Add A Copy" GridPane.columnIndex="3" GridPane.rowIndex="5">
+            <Button fx:id="btnCopy" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="25.0" prefWidth="144.0" text="Add A Copy" GridPane.columnIndex="3" GridPane.rowIndex="5">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
          </children>
       </GridPane>
-      <TableView fx:id="tbExistingCopiesBook" prefHeight="389.0" prefWidth="207.0">
+      <TableView fx:id="tbExistingCopiesBook" prefHeight="317.0" prefWidth="517.0">
         <columns>
-          <TableColumn fx:id="colBookTitle" prefWidth="239.0" text="Title" />
-          <TableColumn fx:id="colBookISBN" prefWidth="90.0" text="ISBN" />
-            <TableColumn fx:id="colBookAuthor" prefWidth="121.0" text="Author" />
-            <TableColumn fx:id="colBookNumCopies" prefWidth="197.0" text="Number of Copies" />
+          <TableColumn fx:id="colBookTitle" prefWidth="212.0" text="Title" />
+          <TableColumn fx:id="colBookISBN" prefWidth="101.0" text="ISBN" />
+            <TableColumn fx:id="colBookAuthor" prefWidth="148.0" text="Author" />
+            <TableColumn fx:id="colBookNumCopies" prefWidth="120.0" text="Number of Copies" />
         </columns>
       </TableView>
    </children>
