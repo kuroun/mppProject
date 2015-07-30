@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import ruleset.LoginRuleSet;
 import ruleset.RuleSet;
+import ruleset.RuleSetFactory;
 import business.SystemController;
 
 public class LoginInit {
@@ -44,7 +45,7 @@ public class LoginInit {
 	void login(ActionEvent event) {
 		String username = txtUsername.getText();
 		String password = txtPassword.getText();
-		RuleSet loginRuleSet = new LoginRuleSet();
+		RuleSet loginRuleSet = RuleSetFactory.getRuleSet(LoginInit.this);
 		try {
 			loginRuleSet.applyRule(LoginInit.this);
 

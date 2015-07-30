@@ -187,11 +187,11 @@ public class MainFrameInit {
 	void initWindow(Auth auth) {
 		System.out.println(auth);
 		if (auth.equals(Auth.ADMIN)) {
-			menu.getChildren().remove(btnAddCopyExistingBook);
 			menu.getChildren().remove(btnCheckoutBook);
 		} else if (auth.equals(Auth.LIBRARIAN)) {
 			menu.getChildren().remove(btnAddNewLibraryMember);
 			menu.getChildren().remove(btnViewAllLibraryMembers);
+			menu.getChildren().remove(btnAddCopyExistingBook);
 		}
 	}
 }
