@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import ruleset.RuleSet;
+import ruleset.RuleSetFactory;
 import business.Book;
 import business.CheckOutRecordTable;
 import business.CheckoutRecordEntry;
@@ -17,6 +19,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -80,21 +83,20 @@ public class CheckOutBookFormInit {
     @FXML
     private Label lblISBN;
 
-    
-//    //Constructor
-//    public CheckOutBookFormInit(){
-//    }
-//    //Singleton pattern
-//    private static CheckOutBookFormInit instance = new CheckOutBookFormInit();
-//    public static CheckOutBookFormInit getInstance(){
-//    	return instance;
-//    }
     @FXML
     void checkOutForm(ActionEvent event) throws LibrarySystemException {
     	String memberId = txtMemberId.getText();
     	String isbn = txtISBN.getText();
-  
-    	new SystemController().checkoutBook(memberId, isbn);
+    	try{
+    		RuleSet AddNewCheckoutRecordRuleSet = RuleSetFactory
+					.getRuleSet(CheckOutBookFormInit.this);
+    		AddNewCheckoutRecordRuleSet.applyRule(CheckOutBookFormInit.this);
+    		new SystemController().checkoutBook(memberId, isbn);
+    	}catch(Exception e){
+    		Alert alert = new SystemController().messageDialog("WARNING");
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
+    	}
     }
 
 
@@ -126,9 +128,17 @@ public class CheckOutBookFormInit {
 		return  tblCheckOutRecord;
 	}
 
-	
+   public TextField getTxtMemberId() {
+		return txtMemberId;
+	}
 
-   @FXML
+
+	public TextField getTxtISBN() {
+		return txtISBN;
+	}
+
+
+@FXML
     void initialize() {
         assert vbCheckOutRecord != null : "fx:id=\"vbCheckOutRecord\" was not injected: check your FXML file 'CheckOutBookForm.fxml'.";
         assert pnCheckOutForm != null : "fx:id=\"pnCheckOutForm\" was not injected: check your FXML file 'CheckOutBookForm.fxml'.";
