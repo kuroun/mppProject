@@ -12,14 +12,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-<<<<<<< HEAD
+
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import ui.CheckOutBookFormInit;
 import ui.MainFrameInit;
 import ui.WindowController;
-=======
->>>>>>> 01d49db63ff599c7a919fd3526638117ca5fd970
+
 import dataaccess.Auth;
 import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;
@@ -146,7 +145,6 @@ public class SystemController implements ControllerInterface {
 					int getMaxCheckoutLenght = b.getMaxCheckoutLength();
 					da.searchMember(memberId).checkout(cb, LocalDate.now(), LocalDate.now().plusDays(getMaxCheckoutLenght));
 					da.saveNewCheckoutRecordEntry(m,b);
-					//System.out.println(m.getCheckoutRecord().getCheckoutRecordEntry());
 					Alert alert = messageDialog("INFORMATION");
 					alert.setContentText("Checkout Book Entry was add successfully");
 					alert.showAndWait();
@@ -170,25 +168,27 @@ public class SystemController implements ControllerInterface {
 	
 	public void queryCheckoutRecordToTable(LibraryMember member){
 		
-		ObservableList<CheckoutRecordEntry> bookRecordData = FXCollections
+		ObservableList<CheckOutRecordTable> bookRecordData = FXCollections
 				.observableArrayList();
 
+		List<CheckOutRecordTable> checkOutRecordTable = new ArrayList<CheckOutRecordTable>();
 		List<CheckoutRecordEntry> record = member.getCheckoutRecord().getCheckoutRecordEntry();
-		System.out.println(record);
-
-		bookRecordData.addAll(record);
-		CheckOutBookFormInit table = new CheckOutBookFormInit();
-		System.out.println(table);
+		for(CheckoutRecordEntry x: record){
+			checkOutRecordTable.add(new CheckOutRecordTable(
+					x.getBookCopy().getBook().getTitle(),
+					x.getBookCopy().getCopyNum(),
+					x.getCheckoutDate(),
+					x.getDueDate()
+					));
+		}
+		System.out.println(checkOutRecordTable);
+		bookRecordData.addAll(checkOutRecordTable);
 		MainFrameInit.checkoutController.getTblCheckOutRecord().setItems(bookRecordData);
 		
-		MainFrameInit.checkoutController.getThCopyNumber().setCellValueFactory(new PropertyValueFactory<CheckoutRecordEntry, ObservableValue<String>>(
-				"bookCopy"));
-		MainFrameInit.checkoutController.getThCheckOutDate().setCellValueFactory(new PropertyValueFactory<CheckoutRecordEntry, LocalDate>(
-				"checkoutDate"));
-		MainFrameInit.checkoutController.getThDueDate().setCellValueFactory(new PropertyValueFactory<CheckoutRecordEntry, LocalDate>(
-				"dueDate"));
-
-
+		MainFrameInit.checkoutController.getThBook().setCellValueFactory(new PropertyValueFactory<CheckOutRecordTable, String>("bookTitle"));
+		MainFrameInit.checkoutController.getThCopyNumber().setCellValueFactory(new PropertyValueFactory<CheckOutRecordTable, Integer>("copyNumber"));
+		MainFrameInit.checkoutController.getThCheckOutDate().setCellValueFactory(new PropertyValueFactory<CheckOutRecordTable, LocalDate>("checkOutDate"));
+		MainFrameInit.checkoutController.getThDueDate().setCellValueFactory(new PropertyValueFactory<CheckOutRecordTable, LocalDate>("dueDate"));
 		
 	}
 	public Alert messageDialog(String type) {

@@ -15,24 +15,21 @@
             <Label fx:id="lblISBN" layoutX="252.0" layoutY="28.0" text="ISBN" />
             <TextField fx:id="txtISBN" layoutX="294.0" layoutY="24.0" />
             <Button fx:id="btnCheckOut" layoutX="25.0" layoutY="64.0" mnemonicParsing="false" onAction="#checkOutForm" prefHeight="25.0" prefWidth="87.0" text="Check out" />
-            <ScrollPane fx:id="pnCheckOutRecord" layoutX="6.0" layoutY="102.0" prefHeight="297.0" prefWidth="461.0">
+            <ScrollPane fx:id="pnCheckOutRecord" layoutX="6.0" layoutY="102.0" prefHeight="297.0" prefWidth="472.0">
                <content>
-                  <VBox fx:id="vbCheckOutRecord" prefHeight="293.0" prefWidth="442.0">
+                  <VBox fx:id="vbCheckOutRecord" prefHeight="293.0" prefWidth="462.0">
                      <children>
-                        <Label fx:id="lblStudentName" alignment="TOP_CENTER" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="439.0">
+                        <Label fx:id="lblStudentName" alignment="TOP_CENTER" contentDisplay="RIGHT" prefHeight="27.0" prefWidth="439.0">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tblCheckOutRecord" prefHeight="257.0" prefWidth="439.0">
-                           <columnResizePolicy>
-                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                           </columnResizePolicy>
+                        <TableView fx:id="tblCheckOutRecord" prefHeight="269.0" prefWidth="450.0">
                            <columns>
-                              <TableColumn fx:id="thBook" editable="false" prefWidth="62.0" text="Book" />
-                              <TableColumn fx:id="thCopyNumber" editable="false" prefWidth="88.0" text="CopyNumber" />
-                              <TableColumn fx:id="thCheckOutDate" editable="false" prefWidth="113.0" text="CheckOutDate" />
-                              <TableColumn fx:id="thDueDate" editable="false" prefWidth="113.0" text="DueDate" />
+                              <TableColumn fx:id="thBook" editable="false" prefWidth="177.0" text="Book" />
+                              <TableColumn fx:id="thCopyNumber" editable="false" prefWidth="74.0" text="CopyNum" />
+                              <TableColumn fx:id="thCheckOutDate" editable="false" prefWidth="107.0" text="CheckOutDate" />
+                              <TableColumn fx:id="thDueDate" editable="false" prefWidth="103.0" text="DueDate" />
                            </columns>
                         </TableView>
                      </children>
