@@ -12,22 +12,22 @@
    <children>
       <AnchorPane fx:id="header" prefHeight="60.0" prefWidth="685.0">
          <children>
-            <Label layoutX="17.0" layoutY="-20.0" prefHeight="92.0" prefWidth="281.0" text="Library System">
+            <Label layoutX="14.0" layoutY="3.0" prefHeight="57.0" prefWidth="138.0" text="Library System">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Text fx:id="txtUserName" layoutX="514.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="77.20426940917969">
+            <Text fx:id="txtUserName" layoutX="514.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="77.20426940917969">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Text>
-            <Text fx:id="txtUserType" layoutX="653.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Librarian" wrappingWidth="90.37906646728516">
+            <Text fx:id="txtUserType" layoutX="653.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Librarian" wrappingWidth="90.37906646728516">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Text>
-            <Label layoutX="455.0" layoutY="36.0" text="User ID:" />
-            <Label layoutX="611.0" layoutY="36.0" text="Type:" />
+            <Label layoutX="455.0" layoutY="24.0" text="User ID:" />
+            <Label layoutX="611.0" layoutY="24.0" text="Role:" />
          </children>
       </AnchorPane>
       <SplitPane fx:id="sppFunction" dividerPositions="0.26296296296296295" prefHeight="564.0" prefWidth="812.0">
@@ -35,9 +35,9 @@
             <VBox fx:id="menu" fillWidth="false" prefHeight="542.0" prefWidth="232.0" spacing="15.0">
                <children>
                   <Button fx:id="btnAddNewLibraryMember" mnemonicParsing="false" onAction="#addNewLibraryMember" prefHeight="26.0" prefWidth="195.0" text="Add new library member" />
-                  <Button fx:id="btnCheckoutBook" mnemonicParsing="false" onAction="#checkoutABook" prefHeight="26.0" prefWidth="195.0" text="Checkout a book" />
-                  <Button fx:id="btnAddCopyExistingBook" mnemonicParsing="false" onAction="#addACopyOfExistingBook" prefHeight="26.0" prefWidth="195.0" text="Add a copy of existing book" />
                   <Button fx:id="btnViewAllLibraryMembers" mnemonicParsing="false" onAction="#viewAllLibraryMembers" prefHeight="26.0" prefWidth="195.0" text="View all library members" />
+                  <Button fx:id="btnAddCopyExistingBook" mnemonicParsing="false" onAction="#addACopyOfExistingBook" prefHeight="26.0" prefWidth="195.0" text="Add a copy of existing book" />
+                  <Button fx:id="btnCheckoutBook" mnemonicParsing="false" onAction="#checkoutABook" prefHeight="26.0" prefWidth="195.0" text="Checkout a book" />
                   <Button fx:id="btnPrintCheckoutRecord" mnemonicParsing="false" onAction="#printCheckoutRecordForm" prefHeight="26.0" prefWidth="195.0" text="Print Checkout Record" />
                   <Button fx:id="btnLogout1" mnemonicParsing="false" onAction="#logout" prefHeight="26.0" prefWidth="195.0" text="Log out" />
                </children>

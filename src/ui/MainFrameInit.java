@@ -82,7 +82,7 @@ public class MainFrameInit {
 		try {
 			Parent root = loader.load();
 			Stage stage = new Stage();
-			stage.setTitle("Library Systems");
+			stage.setTitle("Library System");
 			stage.setScene(new Scene(root));
 			stage.show();
 		} catch (IOException e) {

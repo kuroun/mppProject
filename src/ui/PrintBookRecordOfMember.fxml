@@ -12,7 +12,7 @@
          <children>
             <Label fx:id="lblMemberId" layoutX="90.0" layoutY="27.0" text="Member ID:" />
             <TextField fx:id="txtMemberId" layoutX="167.0" layoutY="23.0" />
-            <Button fx:id="btnPrintRecord" layoutX="167.0" layoutY="62.0" mnemonicParsing="false" onAction="#printCheckoutRecord" prefHeight="26.0" prefWidth="163.0" text="Print Checkout Record" />
+            <Button fx:id="btnPrintRecord" layoutX="167.0" layoutY="62.0" mnemonicParsing="false" onAction="#printCheckoutRecord" prefHeight="26.0" prefWidth="149.0" text="Print Checkout Record" />
          </children>
       </AnchorPane>
    </children>

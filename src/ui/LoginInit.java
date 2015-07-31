@@ -73,7 +73,7 @@ public class LoginInit {
 			
 
 			Stage stage = new Stage();
-			stage.setTitle("Library Systems");
+			stage.setTitle("Library System");
 			stage.setScene(new Scene(root));
 			stage.show();
 

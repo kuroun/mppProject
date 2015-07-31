@@ -14,7 +14,7 @@
             <TextField fx:id="txtMemberId" layoutX="126.0" layoutY="23.0" />
             <Label fx:id="lblISBN" layoutX="328.0" layoutY="29.0" text="ISBN:" />
             <TextField fx:id="txtISBN" layoutX="372.0" layoutY="24.0" />
-            <Button fx:id="btnCheckOut" layoutX="448.0" layoutY="58.0" mnemonicParsing="false" onAction="#checkOutForm" prefHeight="25.0" prefWidth="87.0" text="Check out">
+            <Button fx:id="btnCheckOut" layoutX="434.0" layoutY="56.0" mnemonicParsing="false" onAction="#checkOutForm" prefHeight="25.0" prefWidth="87.0" text="Check out">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
