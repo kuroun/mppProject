@@ -1850,19 +1850,19 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 324,
-											"top": 147,
-											"width": 361.9814453125,
+											"left": 347,
+											"top": 144,
+											"width": 322.26416015625,
 											"height": 13,
 											"autoResize": false,
-											"alpha": 0.09678403576953477,
-											"distance": 103.4842983258813,
+											"alpha": 0.12090275311315893,
+											"distance": 107.78682665335315,
 											"hostEdge": {
 												"$ref": "AAAAAAFO4i1cHxIQn7g="
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "4 : RuleSetFactory.getRuleSet(AddNewLibraryMemberInit.this)",
+											"text": "4 : RuleSetFactory.getRuleSet(AddCopyOfBookInit.this)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -2017,9 +2017,9 @@
 											"showShadow": true,
 											"containerChangeable": false,
 											"containerExtending": false,
-											"left": 324,
+											"left": 343,
 											"top": 176,
-											"width": 265.88427734375,
+											"width": 226.1669921875,
 											"height": 13,
 											"autoResize": false,
 											"alpha": 0.33324424166650457,
@@ -2029,7 +2029,7 @@
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "5 : .applyRule(AddNewLibraryMemberInit.this)",
+											"text": "5 : .applyRule(AddCopyOfBookInit.this)",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -4429,7 +4429,7 @@
 											},
 											"edgePosition": 1,
 											"underline": false,
-											"text": "17 : ture",
+											"text": "17 : true",
 											"horizontalAlignment": 2,
 											"verticalAlignment": 5
 										},
@@ -4632,7 +4632,7 @@
 							},
 							"visibility": "public",
 							"messageSort": "synchCall",
-							"arguments": "AddNewLibraryMemberInit.this",
+							"arguments": "AddCopyOfBookInit.this",
 							"isConcurrentIteration": false
 						},
 						{
@@ -4650,7 +4650,7 @@
 							},
 							"visibility": "public",
 							"messageSort": "synchCall",
-							"arguments": "AddNewLibraryMemberInit.this",
+							"arguments": "AddCopyOfBookInit.this",
 							"isConcurrentIteration": false
 						},
 						{
@@ -4851,7 +4851,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFO0zOh878CMEU="
 							},
-							"name": "ture",
+							"name": "true",
 							"source": {
 								"$ref": "AAAAAAFO0zckqL9U8Vc="
 							},
@@ -5056,6 +5056,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -5109,6 +5110,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
@@ -5126,6 +5128,7 @@
 					"visibility": "public",
 					"isStatic": false,
 					"isLeaf": false,
+					"type": "",
 					"isReadOnly": false,
 					"isOrdered": false,
 					"isUnique": false,
