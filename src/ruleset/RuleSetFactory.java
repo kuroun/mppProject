@@ -6,6 +6,7 @@ import ui.AddCopyOfBookInit;
 import ui.AddNewLibraryMemberInit;
 import ui.CheckOutBookFormInit;
 import ui.LoginInit;
+import ui.PrintCheckoutRecord;
 
 
 public final class RuleSetFactory {
@@ -20,6 +21,7 @@ public final class RuleSetFactory {
 		map.put(CheckOutBookFormInit.class, new AddNewCheckoutRecordRuleSet());
 		map.put(LoginInit.class, new LoginRuleSet());
 		map.put(AddCopyOfBookInit.class, new AddACopyOfExistingBookRuleSet());
+		map.put(PrintCheckoutRecord.class, new PrintRecordRuleSet());
 	}
 	
 	public static RuleSet getRuleSet(Object c) {
