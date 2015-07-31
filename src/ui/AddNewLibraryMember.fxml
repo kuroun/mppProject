@@ -57,7 +57,7 @@
       <TextField fx:id="txtPhoneNumber" GridPane.columnIndex="1" GridPane.rowIndex="8" />
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="450.0" text="User Information Form" GridPane.columnSpan="2">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
    </children>

@@ -6,30 +6,33 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="pnCheckOutForm" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckOutBookFormInit">
+<AnchorPane fx:id="pnCheckOutForm" prefHeight="586.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.CheckOutBookFormInit">
    <children>
-      <AnchorPane fx:id="pnSubCheckOutForm" layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="403.0" prefWidth="490.0">
+      <AnchorPane fx:id="pnSubCheckOutForm" layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="586.0" prefWidth="586.0">
          <children>
-            <Label fx:id="lblMemberId" layoutX="25.0" layoutY="28.0" text="MemberID" />
-            <TextField fx:id="txtMemberId" layoutX="89.0" layoutY="24.0" />
-            <Label fx:id="lblISBN" layoutX="252.0" layoutY="28.0" text="ISBN" />
-            <TextField fx:id="txtISBN" layoutX="294.0" layoutY="24.0" />
-            <Button fx:id="btnCheckOut" layoutX="25.0" layoutY="64.0" mnemonicParsing="false" onAction="#checkOutForm" prefHeight="25.0" prefWidth="87.0" text="Check out" />
-            <ScrollPane fx:id="pnCheckOutRecord" layoutX="6.0" layoutY="102.0" prefHeight="297.0" prefWidth="472.0">
+            <Label fx:id="lblMemberId" layoutX="47.0" layoutY="28.0" text="Member ID:" />
+            <TextField fx:id="txtMemberId" layoutX="126.0" layoutY="23.0" />
+            <Label fx:id="lblISBN" layoutX="328.0" layoutY="29.0" text="ISBN:" />
+            <TextField fx:id="txtISBN" layoutX="372.0" layoutY="24.0" />
+            <Button fx:id="btnCheckOut" layoutX="448.0" layoutY="58.0" mnemonicParsing="false" onAction="#checkOutForm" prefHeight="25.0" prefWidth="87.0" text="Check out">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <ScrollPane fx:id="pnCheckOutRecord" layoutX="-4.0" layoutY="106.0" prefHeight="297.0" prefWidth="586.0">
                <content>
-                  <VBox fx:id="vbCheckOutRecord" prefHeight="293.0" prefWidth="462.0">
+                  <VBox fx:id="vbCheckOutRecord" prefHeight="475.0" prefWidth="578.0">
                      <children>
-                        <Label fx:id="lblStudentName" alignment="TOP_CENTER" contentDisplay="RIGHT" prefHeight="27.0" prefWidth="439.0">
+                        <Label fx:id="lblStudentName" alignment="TOP_CENTER" contentDisplay="RIGHT" prefHeight="26.0" prefWidth="583.0">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tblCheckOutRecord" prefHeight="269.0" prefWidth="450.0">
+                        <TableView fx:id="tblCheckOutRecord" prefHeight="452.0" prefWidth="578.0">
                            <columns>
-                              <TableColumn fx:id="thBook" editable="false" prefWidth="177.0" text="Book" />
-                              <TableColumn fx:id="thCopyNumber" editable="false" prefWidth="74.0" text="CopyNum" />
-                              <TableColumn fx:id="thCheckOutDate" editable="false" prefWidth="107.0" text="CheckOutDate" />
-                              <TableColumn fx:id="thDueDate" editable="false" prefWidth="103.0" text="DueDate" />
+                              <TableColumn fx:id="thBook" editable="false" prefWidth="224.0" text="Book" />
+                              <TableColumn fx:id="thCopyNumber" editable="false" prefWidth="116.0" text="Copy Number" />
+                              <TableColumn fx:id="thCheckOutDate" editable="false" prefWidth="123.0" text="CheckOut Date" />
+                              <TableColumn fx:id="thDueDate" editable="false" prefWidth="107.0" text="Due Date" />
                            </columns>
                         </TableView>
                      </children>

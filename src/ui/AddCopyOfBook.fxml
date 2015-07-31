@@ -30,14 +30,14 @@
             <RowConstraints maxHeight="22.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text fx:id="txtTitle" fill="#060a00" stroke="#1b1b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Input A Copy of Book" textAlignment="CENTER" wrappingWidth="587.830078125" GridPane.columnSpan="2" GridPane.rowIndex="1">
+            <Text fx:id="txtTitle" fill="#060a00" stroke="#1b1b1b" strokeType="OUTSIDE" strokeWidth="0.0" text="Input a Copy of Book" textAlignment="CENTER" wrappingWidth="587.830078125" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
             <Label fx:id="lblBookISBN" alignment="BOTTOM_RIGHT" prefHeight="26.0" prefWidth="152.0" text="  Book ISBN:" textFill="#000314" GridPane.rowIndex="3">
                <font>
-                  <Font name="System Italic" size="19.0" />
+                  <Font name="System Italic" size="14.0" />
                </font>
             </Label>
             <TextField fx:id="textISDN" prefHeight="30.0" prefWidth="370.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3" />
@@ -46,24 +46,24 @@
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="The Existing Copies of Book Information" textAlignment="CENTER" wrappingWidth="588.13671875" GridPane.columnSpan="2" GridPane.rowIndex="8">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="All Book Copies Information" textAlignment="CENTER" wrappingWidth="588.13671875" GridPane.columnSpan="2" GridPane.rowIndex="8">
                <font>
-                  <Font name="System Italic" size="21.0" />
+                  <Font name="System Italic" size="18.0" />
                </font>
             </Text>
-            <Button fx:id="btnCopy" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="25.0" prefWidth="144.0" text="Add A Copy" GridPane.columnIndex="3" GridPane.rowIndex="5">
+            <Button fx:id="btnCopy" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="25.0" prefWidth="144.0" text="Add" GridPane.columnIndex="3" GridPane.rowIndex="5">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
          </children>
       </GridPane>
-      <TableView fx:id="tbExistingCopiesBook" prefHeight="317.0" prefWidth="517.0">
+      <TableView fx:id="tbExistingCopiesBook" prefHeight="348.0" prefWidth="586.0">
         <columns>
           <TableColumn fx:id="colBookTitle" prefWidth="212.0" text="Title" />
           <TableColumn fx:id="colBookISBN" prefWidth="101.0" text="ISBN" />
             <TableColumn fx:id="colBookAuthor" prefWidth="148.0" text="Author" />
-            <TableColumn fx:id="colBookNumCopies" prefWidth="120.0" text="Number of Copies" />
+            <TableColumn fx:id="colBookNumCopies" prefWidth="124.0" text="Number of Copies" />
         </columns>
       </TableView>
    </children>
