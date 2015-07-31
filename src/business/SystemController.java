@@ -166,7 +166,7 @@ public class SystemController implements ControllerInterface {
 	}
 	
 	public void queryCheckoutRecordToTable(LibraryMember member){
-		
+		//A list that allows listeners to track changes when they occur
 		ObservableList<CheckOutRecordTable> bookRecordData = FXCollections
 				.observableArrayList();
 
