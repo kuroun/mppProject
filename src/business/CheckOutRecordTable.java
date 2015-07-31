@@ -12,7 +12,7 @@ public class CheckOutRecordTable {
 	
 	public CheckOutRecordTable(String bookTitle, int copyNumber,
 			LocalDate checkOutDate, LocalDate dueDate) {
-		super();
+		//super();
 		this.bookTitle = bookTitle;
 		this.copyNumber = copyNumber;
 		this.checkOutDate = checkOutDate;

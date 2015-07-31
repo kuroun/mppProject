@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import business.SystemController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -87,7 +86,6 @@ public class MainFrameInit {
 			stage.setScene(new Scene(root));
 			stage.show();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -101,7 +99,6 @@ public class MainFrameInit {
 			operation.getChildren().clear();
 			operation.getChildren().add(addMemberForm);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -113,40 +110,19 @@ public class MainFrameInit {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(
 					"CheckOutBookForm.fxml"));
-			System.out.println(loader);
 			Parent checkoutForm = loader.load();
 			operation.getChildren().clear();
 			operation.getChildren().add(checkoutForm);
 			checkoutController = loader.<CheckOutBookFormInit> getController();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	@FXML
 	void addACopyOfExistingBook(ActionEvent event) {
-		// try {
-		// Parent addCopyBook;
-		// addCopyBook = FXMLLoader.load(getClass().getResource(
-		// "AddCopyOfBook.fxml"));
-		// operation.getChildren().clear();
-		// operation.getChildren().add(addCopyBook);
-		//
-		// } catch (IOException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-
-		// Cheng
 		try {
-			/*
-			 * Parent addCopyBook; addCopyBook =
-			 * FXMLLoader.load(getClass().getResource( "AddCopyOfBook.fxml"));
-			 * operation.getChildren().clear();
-			 * operation.getChildren().add(addCopyBook);
-			 */
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(
 					"AddCopyOfBook.fxml"));
@@ -180,7 +156,6 @@ public class MainFrameInit {
 					.<LibraryMemberOverviewInit> getController();
 			controller.setMemberTable();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -195,7 +170,6 @@ public class MainFrameInit {
 				operation.getChildren().add(printRecord);
 
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	    }
@@ -223,7 +197,6 @@ public class MainFrameInit {
 	}
 
 	void initWindow(Auth auth) {
-		//System.out.println(auth);
 		if (auth.equals(Auth.ADMIN)) {
 			menu.getChildren().remove(btnCheckoutBook);
 			menu.getChildren().remove(btnPrintCheckoutRecord);

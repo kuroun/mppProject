@@ -73,16 +73,16 @@ public class AddCopyOfBookInit {
 			String aIsbn = textISDN.getText();
 
 			if (sc.addBookCopy(aIsbn)) {
-				System.out.println(sc.searchBook(aIsbn).toString());
-				System.out.println(sc.searchBook(aIsbn).getCopies().length);
+				//System.out.println(sc.searchBook(aIsbn).toString());
+				//System.out.println(sc.searchBook(aIsbn).getCopies().length);
 				Alert alert = new SystemController()
 						.messageDialog("INFORMATION");
 				alert.setContentText("This copy of book is added successfully to system");
 				alert.showAndWait();
 				clearDisplay();
 				setBookTable();
-				System.out.println("after:"
-						+ sc.searchBook(aIsbn).getCopies().length);
+				//System.out.println("after:"
+				//		+ sc.searchBook(aIsbn).getCopies().length);
 				actionDisplay.setText("\nThis book (ISBN:" + aIsbn + ") have "
 						+ sc.searchBook(aIsbn).getCopies().length
 						+ " copies now.");

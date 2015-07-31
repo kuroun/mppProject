@@ -180,7 +180,7 @@ public class SystemController implements ControllerInterface {
 					x.getDueDate()
 					));
 		}
-		System.out.println(checkOutRecordTable);
+		//System.out.println(checkOutRecordTable);
 		bookRecordData.addAll(checkOutRecordTable);
 		MainFrameInit.checkoutController.getTblCheckOutRecord().setItems(bookRecordData);
 		
@@ -224,7 +224,7 @@ public class SystemController implements ControllerInterface {
 	
 	public void printToConsole(LibraryMember member){
 		List<CheckoutRecordEntry> record = member.getCheckoutRecord().getCheckoutRecordEntry();
-		System.out.print("Member Name: " + member.getFirstName() + " " + member.getLastName());
+		System.out.print("\n\nMember Name: " + member.getFirstName() + " " + member.getLastName());
 		System.out.println(", Member ID: " + member.getMemberID());
 		String leftAlignFormat = "| %-32s | %-10d | %-13s | %-13s |%n";
 
